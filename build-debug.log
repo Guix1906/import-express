@@ -1,0 +1,317 @@
+
+> build
+> vite build
+
+[36mvite v7.3.3 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 4410 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/client/[22m[32m.assetsignore                                  [39m[1m[2m  0.02 kB[22m[1m[22m
+[2mdist/client/[22m[35massets/styles-DPqUERhZ.css                     [39m[1m[2m184.08 kB[22m[1m[22m[2m │ gzip:  25.24 kB[22m
+[2mdist/client/[22m[36massets/isBefore-VT1fKbNZ.js                    [39m[1m[2m  0.08 kB[22m[1m[22m[2m │ gzip:   0.10 kB[22m
+[2mdist/client/[22m[36massets/chevron-left-DTsCq3v0.js                [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:   0.15 kB[22m
+[2mdist/client/[22m[36massets/chevron-right-C9V7zVkR.js               [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:   0.14 kB[22m
+[2mdist/client/[22m[36massets/startOfMonth--kEw9ips.js                [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:   0.14 kB[22m
+[2mdist/client/[22m[36massets/loader-circle-DUj0Oyph.js               [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[2mdist/client/[22m[36massets/plus-CgmuUJ-Y.js                        [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:   0.15 kB[22m
+[2mdist/client/[22m[36massets/addDays-C1Q_PqBg.js                     [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[2mdist/client/[22m[36massets/arrow-right-DW8USoOA.js                 [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[2mdist/client/[22m[36massets/arrow-left-BOEsMzXX.js                  [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/clock-Cpy_38Pg.js                       [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/differenceInCalendarMonths-Ba0P9Y73.js  [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[2mdist/client/[22m[36massets/search-CGOxOXXp.js                      [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/trending-up-5yASFDhs.js                 [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/endOfMonth-hreyL3WA.js                  [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/skeleton-BRa1_k_F.js                    [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[2mdist/client/[22m[36massets/circle-check-J3N96zwC.js                [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/user-Rh0IYy_z.js                        [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[2mdist/client/[22m[36massets/mail-Dx8k9pqS.js                        [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/dollar-sign-n4rfwqmj.js                 [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[2mdist/client/[22m[36massets/briefcase-DGgsey6T.js                   [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/ellipsis-DYbIIQS_.js                    [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[2mdist/client/[22m[36massets/square-check-big-BBkEhM03.js            [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/upload-DBfUPmjl.js                      [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[2mdist/client/[22m[36massets/download-CHKA44Nv.js                    [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[2mdist/client/[22m[36massets/message-square-BWmzuYmX.js              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/activity-C17owflu.js                    [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/_commonjs-dynamic-modules-TDtrdbi3.js   [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[2mdist/client/[22m[36massets/message-circle-B17zXAvz.js              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[2mdist/client/[22m[36massets/user-check-Dr-dqSRt.js                  [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[2mdist/client/[22m[36massets/support.functions-BDECjsml.js           [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[2mdist/client/[22m[36massets/circle-alert-D11wt8mU.js                [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[2mdist/client/[22m[36massets/external-link-CvWfK5wt.js               [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/users-round-CHy9tx6w.js                 [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[2mdist/client/[22m[36massets/eye-BBF5Aq_P.js                         [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[2mdist/client/[22m[36massets/calendar-D3k2W8Q0.js                    [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[2mdist/client/[22m[36massets/map-pin-DUGKS3tp.js                     [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/triangle-alert-DagSGQNE.js              [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[2mdist/client/[22m[36massets/shield-dS7zwYUc.js                      [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/pencil-Cko73ZK-.js                      [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/inbox-eOhYrO1g.js                       [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[2mdist/client/[22m[36massets/send-1WeFRrWU.js                        [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/bell-YrRCAwU6.js                        [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[2mdist/client/[22m[36massets/list-todo-9lr14Bf8.js                   [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[2mdist/client/[22m[36massets/users-MFo2dftS.js                       [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/user-plus-CRq677qi.js                   [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[2mdist/client/[22m[36massets/shield-check-yT778L_B.js                [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[2mdist/client/[22m[36massets/phone-BDCAPR7o.js                       [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/trash-2-CmI8yfvc.js                     [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[2mdist/client/[22m[36massets/scale-C9UpcvpX.js                       [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[2mdist/client/[22m[36massets/useRouterState-Bcfcn7e2.js              [39m[1m[2m  0.35 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[2mdist/client/[22m[36massets/activity-log.functions-DV9-zeI6.js      [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
+[2mdist/client/[22m[36massets/crown-PPMrWfQy.js                       [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[2mdist/client/[22m[36massets/life-buoy-C9LNAK7Q.js                   [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[2mdist/client/[22m[36massets/building-2-J8YGBrFv.js                  [39m[1m[2m  0.39 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[2mdist/client/[22m[36massets/file-text-ChsU_Pif.js                   [39m[1m[2m  0.39 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[2mdist/client/[22m[36massets/wallet-DZP2jd04.js                      [39m[1m[2m  0.42 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
+[2mdist/client/[22m[36massets/file-spreadsheet-zlqGz5an.js            [39m[1m[2m  0.43 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
+[2mdist/client/[22m[36massets/textarea-06lpxZ-1.js                    [39m[1m[2m  0.46 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[2mdist/client/[22m[36massets/file-pen-line-C7VyJrus.js               [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:   0.31 kB[22m
+[2mdist/client/[22m[36massets/process.functions-SxV1VFtb.js           [39m[1m[2m  0.48 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[2mdist/client/[22m[36massets/normalizeInterval-DyVDJ-Ec.js           [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:   0.31 kB[22m
+[2mdist/client/[22m[36massets/settings-2ik8ib8_.js                    [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[2mdist/client/[22m[36massets/sparkles-LaMYpPtn.js                    [39m[1m[2m  0.50 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[2mdist/client/[22m[36massets/tag-QgqboSkq.js                         [39m[1m[2m  0.60 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[2mdist/client/[22m[36massets/use-company-members-k4IZYXKS.js         [39m[1m[2m  0.64 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m
+[2mdist/client/[22m[36massets/list-checks-eErk0AH2.js                 [39m[1m[2m  0.65 kB[22m[1m[22m[2m │ gzip:   0.33 kB[22m
+[2mdist/client/[22m[36massets/use-permissions-CZG_czoF.js             [39m[1m[2m  0.70 kB[22m[1m[22m[2m │ gzip:   0.37 kB[22m
+[2mdist/client/[22m[36massets/badge-PZATjHcb.js                       [39m[1m[2m  0.72 kB[22m[1m[22m[2m │ gzip:   0.38 kB[22m
+[2mdist/client/[22m[36massets/page-header-BFHTQrqE.js                 [39m[1m[2m  0.79 kB[22m[1m[22m[2m │ gzip:   0.38 kB[22m
+[2mdist/client/[22m[36massets/team.functions-BoNc04WQ.js              [39m[1m[2m  0.81 kB[22m[1m[22m[2m │ gzip:   0.45 kB[22m
+[2mdist/client/[22m[36massets/card-CRdNIhCa.js                        [39m[1m[2m  0.98 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[2mdist/client/[22m[36massets/reset-password-C8u8Zhen.js              [39m[1m[2m  1.14 kB[22m[1m[22m[2m │ gzip:   0.67 kB[22m
+[2mdist/client/[22m[36massets/use-active-company-De_6mg1I.js          [39m[1m[2m  1.15 kB[22m[1m[22m[2m │ gzip:   0.53 kB[22m
+[2mdist/client/[22m[36massets/core-persistence.functions-CKD2Pddk.js  [39m[1m[2m  1.22 kB[22m[1m[22m[2m │ gzip:   0.58 kB[22m
+[2mdist/client/[22m[36massets/forgot-password-B1DrJDXM.js             [39m[1m[2m  1.43 kB[22m[1m[22m[2m │ gzip:   0.83 kB[22m
+[2mdist/client/[22m[36massets/table-DY16R-Qv.js                       [39m[1m[2m  1.56 kB[22m[1m[22m[2m │ gzip:   0.54 kB[22m
+[2mdist/client/[22m[36massets/auth-layout-BEj-HCTr.js                 [39m[1m[2m  1.99 kB[22m[1m[22m[2m │ gzip:   0.89 kB[22m
+[2mdist/client/[22m[36massets/formatDistanceToNow-Df8-qBZo.js         [39m[1m[2m  2.17 kB[22m[1m[22m[2m │ gzip:   0.93 kB[22m
+[2mdist/client/[22m[36massets/sheet-wGNorZvS.js                       [39m[1m[2m  2.19 kB[22m[1m[22m[2m │ gzip:   0.86 kB[22m
+[2mdist/client/[22m[36massets/useMutation-CbYH53SO.js                 [39m[1m[2m  2.21 kB[22m[1m[22m[2m │ gzip:   0.91 kB[22m
+[2mdist/client/[22m[36massets/app.auditoria-CnhYYjSf.js               [39m[1m[2m  2.40 kB[22m[1m[22m[2m │ gzip:   1.09 kB[22m
+[2mdist/client/[22m[36massets/kanban-tracks-CTLaesGv.js               [39m[1m[2m  2.51 kB[22m[1m[22m[2m │ gzip:   0.65 kB[22m
+[2mdist/client/[22m[36massets/parseISO-CA84ozn8.js                    [39m[1m[2m  2.66 kB[22m[1m[22m[2m │ gzip:   1.21 kB[22m
+[2mdist/client/[22m[36massets/tabs-DZpX81zo.js                        [39m[1m[2m  3.22 kB[22m[1m[22m[2m │ gzip:   1.35 kB[22m
+[2mdist/client/[22m[36massets/progress-BNAKOhoP.js                    [39m[1m[2m  3.23 kB[22m[1m[22m[2m │ gzip:   1.53 kB[22m
+[2mdist/client/[22m[36massets/login-BdBOZ1MU.js                       [39m[1m[2m  3.29 kB[22m[1m[22m[2m │ gzip:   1.57 kB[22m
+[2mdist/client/[22m[36massets/index-CC93bITD.js                       [39m[1m[2m  3.40 kB[22m[1m[22m[2m │ gzip:   1.36 kB[22m
+[2mdist/client/[22m[36massets/index-CkpB1E4b.js                       [39m[1m[2m  3.46 kB[22m[1m[22m[2m │ gzip:   1.57 kB[22m
+[2mdist/client/[22m[36massets/avatar-CzJoZUY_.js                      [39m[1m[2m  3.51 kB[22m[1m[22m[2m │ gzip:   1.59 kB[22m
+[2mdist/client/[22m[36massets/checkbox-D0KNMLFb.js                    [39m[1m[2m  3.79 kB[22m[1m[22m[2m │ gzip:   1.67 kB[22m
+[2mdist/client/[22m[36massets/register-NMJ_klUv.js                    [39m[1m[2m  3.82 kB[22m[1m[22m[2m │ gzip:   1.56 kB[22m
+[2mdist/client/[22m[36massets/app.onboarding-BAkOm_9N.js              [39m[1m[2m  3.99 kB[22m[1m[22m[2m │ gzip:   1.73 kB[22m
+[2mdist/client/[22m[36massets/auth-middleware-CfVFdcB-.js             [39m[1m[2m  4.59 kB[22m[1m[22m[2m │ gzip:   1.96 kB[22m
+[2mdist/client/[22m[36massets/utils-DV84Vzla.js                       [39m[1m[2m  5.10 kB[22m[1m[22m[2m │ gzip:   2.46 kB[22m
+[2mdist/client/[22m[36massets/app.sala-advogado-PdoA1y7F.js           [39m[1m[2m  5.14 kB[22m[1m[22m[2m │ gzip:   2.23 kB[22m
+[2mdist/client/[22m[36massets/app.quadros._id-BlIdBEvt.js             [39m[1m[2m  5.89 kB[22m[1m[22m[2m │ gzip:   2.23 kB[22m
+[2mdist/client/[22m[36massets/popover-DvaOqQsM.js                     [39m[1m[2m  6.60 kB[22m[1m[22m[2m │ gzip:   2.44 kB[22m
+[2mdist/client/[22m[36massets/app.configuracoes-D0hDXDyQ.js           [39m[1m[2m  7.58 kB[22m[1m[22m[2m │ gzip:   2.58 kB[22m
+[2mdist/client/[22m[36massets/app.equipe._id.quadro-DWxOIKWJ.js       [39m[1m[2m  7.97 kB[22m[1m[22m[2m │ gzip:   3.20 kB[22m
+[2mdist/client/[22m[36massets/useQuery-CF7BfjCF.js                    [39m[1m[2m  8.84 kB[22m[1m[22m[2m │ gzip:   3.22 kB[22m
+[2mdist/client/[22m[36massets/app.processos-Bb0413GK.js               [39m[1m[2m  9.01 kB[22m[1m[22m[2m │ gzip:   2.83 kB[22m
+[2mdist/client/[22m[36massets/app.equipe._id-B1LFGcpf.js              [39m[1m[2m 11.39 kB[22m[1m[22m[2m │ gzip:   3.25 kB[22m
+[2mdist/client/[22m[36massets/format-DpMkZXir.js                      [39m[1m[2m 12.19 kB[22m[1m[22m[2m │ gzip:   3.28 kB[22m
+[2mdist/client/[22m[36massets/new-case-wizard-PKwd8lEX.js             [39m[1m[2m 12.45 kB[22m[1m[22m[2m │ gzip:   4.45 kB[22m
+[2mdist/client/[22m[36massets/app.documentos-BEd3OKHQ.js              [39m[1m[2m 12.86 kB[22m[1m[22m[2m │ gzip:   4.38 kB[22m
+[2mdist/client/[22m[36massets/pt-BR-DEPYRk7G.js                       [39m[1m[2m 13.54 kB[22m[1m[22m[2m │ gzip:   4.13 kB[22m
+[2mdist/client/[22m[36massets/command-DMa2sWld.js                     [39m[1m[2m 13.84 kB[22m[1m[22m[2m │ gzip:   5.30 kB[22m
+[2mdist/client/[22m[36massets/app.equipe-BNldT9k2.js                  [39m[1m[2m 14.59 kB[22m[1m[22m[2m │ gzip:   4.91 kB[22m
+[2mdist/client/[22m[36massets/app.clientes-DjSp8lHz.js                [39m[1m[2m 15.29 kB[22m[1m[22m[2m │ gzip:   4.90 kB[22m
+[2mdist/client/[22m[36massets/app.financeiro-1a3X4NYn.js              [39m[1m[2m 15.93 kB[22m[1m[22m[2m │ gzip:   5.00 kB[22m
+[2mdist/client/[22m[36massets/app.processos._id-DNLKVir8.js           [39m[1m[2m 17.35 kB[22m[1m[22m[2m │ gzip:   4.60 kB[22m
+[2mdist/client/[22m[36massets/app.suporte-DcyI45ft.js                 [39m[1m[2m 17.71 kB[22m[1m[22m[2m │ gzip:   5.55 kB[22m
+[2mdist/client/[22m[36massets/app.triagem-wSp4RfU8.js                 [39m[1m[2m 18.09 kB[22m[1m[22m[2m │ gzip:   5.40 kB[22m
+[2mdist/client/[22m[36massets/_app-DZMr2EJO.js                        [39m[1m[2m 18.72 kB[22m[1m[22m[2m │ gzip:   6.22 kB[22m
+[2mdist/client/[22m[36massets/app.clientes._id-XyC0nrDA.js            [39m[1m[2m 19.44 kB[22m[1m[22m[2m │ gzip:   4.95 kB[22m
+[2mdist/client/[22m[36massets/app.triagem._id-CecDTXko.js             [39m[1m[2m 19.78 kB[22m[1m[22m[2m │ gzip:   5.87 kB[22m
+[2mdist/client/[22m[36massets/app.contratos-CKzRc042.js               [39m[1m[2m 21.98 kB[22m[1m[22m[2m │ gzip:   7.22 kB[22m
+[2mdist/client/[22m[36massets/dropdown-menu-DJCpn7Uj.js               [39m[1m[2m 22.03 kB[22m[1m[22m[2m │ gzip:   6.57 kB[22m
+[2mdist/client/[22m[36massets/app.atendimentos-CR61PwdA.js            [39m[1m[2m 22.59 kB[22m[1m[22m[2m │ gzip:   7.29 kB[22m
+[2mdist/client/[22m[36massets/purify.es-BZstNxVn.js                   [39m[1m[2m 25.43 kB[22m[1m[22m[2m │ gzip:   9.60 kB[22m
+[2mdist/client/[22m[36massets/app.publicacoes-DdE2nTj3.js             [39m[1m[2m 35.83 kB[22m[1m[22m[2m │ gzip:  10.28 kB[22m
+[2mdist/client/[22m[36massets/app.index-BgkvGmFu.js                   [39m[1m[2m 46.78 kB[22m[1m[22m[2m │ gzip:  13.36 kB[22m
+[2mdist/client/[22m[36massets/app.meu-quadro-BXJx6hbf.js              [39m[1m[2m 49.46 kB[22m[1m[22m[2m │ gzip:  14.14 kB[22m
+[2mdist/client/[22m[36massets/app.agenda-C7VG4RUP.js                  [39m[1m[2m 51.48 kB[22m[1m[22m[2m │ gzip:  13.65 kB[22m
+[2mdist/client/[22m[36massets/calendar-DvNphOTv.js                    [39m[1m[2m 52.60 kB[22m[1m[22m[2m │ gzip:  16.38 kB[22m
+[2mdist/client/[22m[36massets/types-DnYw_nee.js                       [39m[1m[2m 52.96 kB[22m[1m[22m[2m │ gzip:  12.10 kB[22m
+[2mdist/client/[22m[36massets/jszip.min-DTYxHVkW.js                   [39m[1m[2m 96.98 kB[22m[1m[22m[2m │ gzip:  29.99 kB[22m
+[2mdist/client/[22m[36massets/AreaChart-DKLhsbuy.js                   [39m[1m[2m134.01 kB[22m[1m[22m[2m │ gzip:  44.05 kB[22m
+[2mdist/client/[22m[36massets/index.es-BfBqfkC-.js                    [39m[1m[2m158.83 kB[22m[1m[22m[2m │ gzip:  53.05 kB[22m
+[2mdist/client/[22m[36massets/html2canvas.esm-DXEQVQnt.js             [39m[1m[2m201.04 kB[22m[1m[22m[2m │ gzip:  47.43 kB[22m
+[2mdist/client/[22m[36massets/BarChart-rOXgs5X0.js                    [39m[1m[2m384.10 kB[22m[1m[22m[2m │ gzip: 106.00 kB[22m
+[2mdist/client/[22m[36massets/jspdf.es.min-C9W6XN34.js                [39m[1m[2m385.57 kB[22m[1m[22m[2m │ gzip: 126.09 kB[22m
+[2mdist/client/[22m[36massets/app.relatorios-Bv9kmztm.js              [39m[1m[2m393.78 kB[22m[1m[22m[2m │ gzip: 127.95 kB[22m
+[2mdist/client/[22m[36massets/index-DOVNXhSc.js                       [39m[1m[33m737.92 kB[39m[22m[2m │ gzip: 222.84 kB[22m
+[2mdist/client/[22m[36massets/app.producao-escritorio-CQYLgYft.js     [39m[1m[33m982.59 kB[39m[22m[2m │ gzip: 282.90 kB[22m
+[32m✓ built in 59.81s[39m
+[36mvite v7.3.3 [32mbuilding ssr environment for production...[36m[39m
+transforming...
+[32m✓[39m 5092 modules transformed.
+rendering chunks...
+Using secrets defined in .env
+[2mdist/server/[22m[32m.dev.vars                                               [39m[1m[2m    0.89 kB[22m[1m[22m
+[2mdist/server/[22m[32mwrangler.json                                           [39m[1m[2m    1.27 kB[22m[1m[22m
+[2mdist/server/[22m[32m.vite/manifest.json                                     [39m[1m[2m   65.59 kB[22m[1m[22m
+[2mdist/server/[22m[35massets/styles-DPqUERhZ.css                              [39m[1m[2m  184.08 kB[22m[1m[22m
+[2mdist/server/[22m[36mindex.js                                                [39m[1m[2m    0.10 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/__23tanstack-start-plugin-adapters-Cwee5PKy.js   [39m[1m[2m    0.14 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/isBefore-Fcr1ltsh.js                             [39m[1m[2m    0.17 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/chevron-left-2P0SoMzu.js                         [39m[1m[2m    0.23 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/chevron-right-COc7dN3F.js                        [39m[1m[2m    0.23 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/startOfMonth-BewuTui-.js                         [39m[1m[2m    0.23 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/loader-circle-DuP6kc3n.js                        [39m[1m[2m    0.25 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/plus-DNPOiH1f.js                                 [39m[1m[2m    0.25 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/arrow-left-BgqiXnGw.js                           [39m[1m[2m    0.28 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/clock-B7uEGu4S.js                                [39m[1m[2m    0.28 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/arrow-right-JILrnqc4.js                          [39m[1m[2m    0.28 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/search-zJ0W0l9M.js                               [39m[1m[2m    0.28 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/trending-up-CF7u6mrW.js                          [39m[1m[2m    0.29 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/circle-check-_k0sE4jY.js                         [39m[1m[2m    0.30 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/user-C-CX4Cpj.js                                 [39m[1m[2m    0.30 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/endOfMonth-BJcS4iCx.js                           [39m[1m[2m    0.30 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/createServerRpc-DKhXlvwN.js                      [39m[1m[2m    0.31 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/mail-Ki8jhpWl.js                                 [39m[1m[2m    0.32 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/skeleton-DV0vbrXh.js                             [39m[1m[2m    0.32 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/addDays-DF2MQo2E.js                              [39m[1m[2m    0.33 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/dollar-sign-BD93GHJR.js                          [39m[1m[2m    0.34 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/briefcase-D3KvcXTE.js                            [39m[1m[2m    0.34 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/upload-D7LC3qpi.js                               [39m[1m[2m    0.34 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/download-DyCMGvWK.js                             [39m[1m[2m    0.35 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/useRouterState-DCJfEuDx.js                       [39m[1m[2m    0.35 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/ellipsis-D22pDbNr.js                             [39m[1m[2m    0.36 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/activity-DT5FQCga.js                             [39m[1m[2m    0.36 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/square-check-big-Dipbc-fO.js                     [39m[1m[2m    0.36 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/user-check-BCOwda5x.js                           [39m[1m[2m    0.37 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/message-square-DUbdZPi2.js                       [39m[1m[2m    0.37 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/external-link-iinqUYaC.js                        [39m[1m[2m    0.38 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/users-round-DeemCK7g.js                          [39m[1m[2m    0.38 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/message-circle-ep3BVdyh.js                       [39m[1m[2m    0.38 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/eye-oUn2LCe3.js                                  [39m[1m[2m    0.39 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/circle-alert-CinS2ooN.js                         [39m[1m[2m    0.39 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/calendar-DvD3aaAg.js                             [39m[1m[2m    0.39 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/shield-Dplx2L_H.js                               [39m[1m[2m    0.40 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/map-pin-LRciGteG.js                              [39m[1m[2m    0.40 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/pencil-CVkikL5R.js                               [39m[1m[2m    0.41 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/inbox-Bgff1Nek.js                                [39m[1m[2m    0.42 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/send-B4i9iTO3.js                                 [39m[1m[2m    0.42 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/bell-CRa2habm.js                                 [39m[1m[2m    0.42 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/triangle-alert-DkdnojW6.js                       [39m[1m[2m    0.42 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/users-vFqjh1St.js                                [39m[1m[2m    0.43 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/phone-aMFPxEGc.js                                [39m[1m[2m    0.44 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/list-todo-ByI5ttMk.js                            [39m[1m[2m    0.44 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/user-plus-rSolBJRb.js                            [39m[1m[2m    0.45 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/trash-2-DPBHdoE3.js                              [39m[1m[2m    0.46 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/scale-C-rwDoJc.js                                [39m[1m[2m    0.46 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/shield-check-XjdnrIb0.js                         [39m[1m[2m    0.46 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/differenceInCalendarMonths-baQ4-PeI.js           [39m[1m[2m    0.47 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/crown-D2XfTR9w.js                                [39m[1m[2m    0.49 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/life-buoy-B7FKKo_e.js                            [39m[1m[2m    0.53 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/building-2-M3prclH2.js                           [39m[1m[2m    0.55 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/file-text-CHMc6Dgk.js                            [39m[1m[2m    0.55 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/file-spreadsheet-C9cTTDHJ.js                     [39m[1m[2m    0.61 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/settings-L9eBRjD0.js                             [39m[1m[2m    0.63 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/wallet-CyIsqe7Y.js                               [39m[1m[2m    0.64 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/sparkles-BcsU_9QA.js                             [39m[1m[2m    0.65 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/file-pen-line-BToyHznZ.js                        [39m[1m[2m    0.65 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/textarea-BZWiya5e.js                             [39m[1m[2m    0.74 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/tag-I0gvRzy_.js                                  [39m[1m[2m    0.83 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/client-D-1qBgGd.js                               [39m[1m[2m    0.84 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/support.functions-DJiA6hYc.js                    [39m[1m[2m    0.88 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/index-ECsfMUSb.js                                [39m[1m[2m    0.92 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/list-checks-a0E0yUXu.js                          [39m[1m[2m    0.97 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/createSsrRpc-ClJ5veIR.js                         [39m[1m[2m    0.98 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/badge-C_XZpdeY.js                                [39m[1m[2m    0.99 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/client.server-B_G6e_7N.js                        [39m[1m[2m    1.05 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/use-permissions-BkseXfk7.js                      [39m[1m[2m    1.10 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/use-company-members-CC-FHA1N.js                  [39m[1m[2m    1.15 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/normalizeInterval-D8diMakL.js                    [39m[1m[2m    1.22 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/activity-log.functions-CSA45uc7.js               [39m[1m[2m    1.30 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/page-header-DncJ_BNd.js                          [39m[1m[2m    1.34 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/card-BGmkFT1L.js                                 [39m[1m[2m    1.76 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/use-active-company-CijoW-_g.js                   [39m[1m[2m    1.83 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/start-BgxQhfZH.js                                [39m[1m[2m    1.92 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/process.functions-DOA6N0nv.js                    [39m[1m[2m    1.94 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/reset-password-Di-nI_9L.js                       [39m[1m[2m    2.15 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/auth-middleware-TJ-qfjoV.js                      [39m[1m[2m    2.25 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/team.functions-3LOmxPvx.js                       [39m[1m[2m    2.37 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/support.functions-CRGPdqpJ.js                    [39m[1m[2m    2.56 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/forgot-password-H8l3v3EX.js                      [39m[1m[2m    2.56 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/table-CE8elwz6.js                                [39m[1m[2m    2.65 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/kanban-tracks-DomlGWQc.js                        [39m[1m[2m    2.88 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/auth-layout-C-zOs2PT.js                          [39m[1m[2m    3.08 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/sheet-DfWCtnhT.js                                [39m[1m[2m    3.46 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/activity-log.functions-D3JUhpm_.js               [39m[1m[2m    3.73 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/legal-deadlines-CdKLHjeE.js                      [39m[1m[2m    3.94 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.auditoria-CaXeIThL.js                        [39m[1m[2m    4.23 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/contracts.functions-DY8GVODr.js                  [39m[1m[2m    4.88 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/useMutation-C-ZaKtyL.js                          [39m[1m[2m    4.96 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/core-persistence.functions-G7s3LJd1.js           [39m[1m[2m    5.34 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/index-9HDeROSP.js                                [39m[1m[2m    5.53 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/formatDistanceToNow-DCZpUIJR.js                  [39m[1m[2m    5.70 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/login-BaNYYFn6.js                                [39m[1m[2m    5.99 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/parseISO-D91UOYai.js                             [39m[1m[2m    6.21 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/legal-ai.functions-CKXEsjBA.js                   [39m[1m[2m    6.46 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/register-BFo678e_.js                             [39m[1m[2m    6.65 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/colaborador-produtividade.functions-DHBQUAw8.js  [39m[1m[2m    6.73 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.onboarding-DvwpiHAR.js                       [39m[1m[2m    6.76 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/atendimentos.functions-iy2bf-_2.js               [39m[1m[2m    6.96 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/progress-L9AIVLL2.js                             [39m[1m[2m    7.29 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/process.functions-DZEetrcx.js                    [39m[1m[2m    7.53 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/tabs-sZDZU9aU.js                                 [39m[1m[2m    7.61 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/kanban.functions-wS_xlCIw.js                     [39m[1m[2m    8.47 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/producao-escritorio.functions-CwgMA2Nj.js        [39m[1m[2m    8.65 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/team.functions-trOTC-ch.js                       [39m[1m[2m    8.66 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.sala-advogado-DTRbVI08.js                    [39m[1m[2m    8.91 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/checkbox-B5c6Xt3h.js                             [39m[1m[2m    9.05 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/index-CPcdPNqU.js                                [39m[1m[2m    9.12 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.quadros._id-B3M_Ckgu.js                      [39m[1m[2m   10.20 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/avatar-3Stmw4X5.js                               [39m[1m[2m   10.95 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/core-persistence.functions-C2W5NeBI.js           [39m[1m[2m   13.33 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/utils-Brm2kPFJ.js                                [39m[1m[2m   13.60 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.configuracoes-Cbvo38aj.js                    [39m[1m[2m   14.14 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.equipe._id.quadro-B0qa1HBZ.js                [39m[1m[2m   14.96 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/popover-CxUXkju-.js                              [39m[1m[2m   15.99 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/_tanstack-start-manifest_v-DlzhnLAy.js           [39m[1m[2m   18.01 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.processos-B3j5xGZQ.js                        [39m[1m[2m   18.38 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/command-CC7pOzYP.js                              [39m[1m[2m   19.99 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/worker-entry-Dhk7aNpd.js                         [39m[1m[2m   21.31 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.equipe._id-DaQs5bjz.js                       [39m[1m[2m   21.47 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/useQuery-CWbLotHb.js                             [39m[1m[2m   21.73 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/pt-BR-BonBNn_7.js                                [39m[1m[2m   23.20 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.documentos-C7dKb9Z6.js                       [39m[1m[2m   24.80 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/new-case-wizard-Cz8Omn_b.js                      [39m[1m[2m   24.88 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.equipe-D8D7PwwA.js                           [39m[1m[2m   25.85 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.clientes-CD0iT63b.js                         [39m[1m[2m   28.46 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/reports.functions-D86cT8nR.js                    [39m[1m[2m   29.66 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.suporte-hOzsbies.js                          [39m[1m[2m   30.30 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/format-DoRwGaCI.js                               [39m[1m[2m   31.51 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.financeiro-DB0scTe4.js                       [39m[1m[2m   32.35 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/_app-D9AwjniS.js                                 [39m[1m[2m   33.19 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.processos._id-BbWnHSLU.js                    [39m[1m[2m   34.03 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.triagem-Betk5Jwq.js                          [39m[1m[2m   34.21 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.clientes._id-B-xnLkK0.js                     [39m[1m[2m   35.40 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.triagem._id-B48VHC9Z.js                      [39m[1m[2m   36.28 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/triagem-flow.functions-Ciy_SrXn.js               [39m[1m[2m   37.94 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.contratos-D189dxPS.js                        [39m[1m[2m   42.93 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.atendimentos-C9fSAelS.js                     [39m[1m[2m   45.09 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/purify.es-BLN0kh4W.js                            [39m[1m[2m   52.83 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/dropdown-menu-ukTqWeRa.js                        [39m[1m[2m   53.72 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.publicacoes-CYQ0kfws.js                      [39m[1m[2m   63.14 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.index-DWxnd74l.js                            [39m[1m[2m   80.78 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.meu-quadro-DD8xNJXg.js                       [39m[1m[2m   91.11 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/app.agenda-yloVZY1a.js                           [39m[1m[2m   95.36 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/types-BbMjq67e.js                                [39m[1m[2m  107.66 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/calendar-BScNF68J.js                             [39m[1m[2m  115.09 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/AreaChart-zPSizakh.js                            [39m[1m[2m  297.05 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/index-Ca68Xx7D.js                                [39m[1m[2m  300.33 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/html2canvas.esm-C17pzFXx.js                      [39m[1m[2m  349.31 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/index.es-DztRda3R.js                             [39m[1m[2m  360.99 kB[22m[1m[22m
+[2mdist/server/[22m[36massets/router-DcrPMHN8.js                               [39m[1m[33m  585.55 kB[39m[22m
+[2mdist/server/[22m[36massets/jspdf.es.min-Cpl28eir.js                         [39m[1m[33m  593.57 kB[39m[22m
+[2mdist/server/[22m[36massets/index-ChW4vIqc.js                                [39m[1m[33m  714.65 kB[39m[22m
+[2mdist/server/[22m[36massets/server-DULPFQRm.js                               [39m[1m[33m  756.48 kB[39m[22m
+[2mdist/server/[22m[36massets/app.relatorios-Cm9faYvp.js                       [39m[1m[33m  774.65 kB[39m[22m
+[2mdist/server/[22m[36massets/BarChart-lltovFeA.js                             [39m[1m[33m  819.50 kB[39m[22m
+[2mdist/server/[22m[36massets/app.producao-escritorio-BLqCeeWr.js              [39m[1m[33m1,856.51 kB[39m[22m
+[32m✓ built in 2m 43s[39m
