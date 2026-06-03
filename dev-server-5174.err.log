@@ -1,0 +1,614 @@
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+Error: Error transforming route file C:/Users/Win11/Documents/Sistema Advocacia/src/routes/_app/app.suporte.tsx: SyntaxError: Identifier 'isAdmin' has already been declared. (126:16)
+    at file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-generator/dist/esm/generator.js:143:13
+    at async generate (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/router-generator-plugin.js:39:4)
+    at async PluginContext.watchChange (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/router-generator-plugin.js:49:4)
+    at async Promise.all (index 1)
+    at async EnvironmentPluginContainer.hookParallel (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:28681:3)
+    at async EnvironmentPluginContainer.watchChange (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:28841:3)
+    at async Promise.all (index 0)
+    at async FSWatcher.<anonymous> (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:25598:3)
+[2m11:13:20[22m [31m[1m[vite][22m[39m [31mInternal server error: Identifier 'isAdmin' has already been declared. (126:16)[39m
+  Plugin: [35mtanstack-router:code-splitter:compile-reference-file[39m
+  File: [36mC:/Users/Win11/Documents/Sistema Advocacia/src/routes/_app/app.suporte.tsx[39m:126:16
+[33m  124 |  
+  125 |    // Verificar se o usuário é owner/admin da empresa ativa
+  126 |    const { data: isAdmin = false } = useQuery({
+      |                  ^
+  127 |      queryKey: ["is-support-admin", user?.id, companyId],
+  128 |      enabled: !!user && !!companyId,[39m
+      at constructor (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptScopeHandler.checkRedeclarationInScope (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:1619:19)
+      at TypeScriptScopeHandler.declareName (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:1585:12)
+      at TypeScriptScopeHandler.declareName (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:4892:11)
+      at TypeScriptParserMixin.declareNameFromIdentifier (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7584:16)
+      at TypeScriptParserMixin.checkIdentifier (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7580:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7517:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7561:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7561:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7557:16)
+      at TypeScriptParserMixin.parseVarId (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13429:10)
+      at TypeScriptParserMixin.parseVarId (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9769:11)
+      at TypeScriptParserMixin.parseVar (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13400:12)
+      at TypeScriptParserMixin.parseVarStatement (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13247:10)
+      at TypeScriptParserMixin.parseVarStatement (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9425:31)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12868:23)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13314:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12117:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12103:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9189:18)
+      at C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13462:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12420:14)
+      at TypeScriptParserMixin.parseFunction (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13461:10)
+      at TypeScriptParserMixin.parseFunctionStatement (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13142:17)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12808:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseModuleItem (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12761:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13333:36)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseProgram (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12639:10)
+      at TypeScriptParserMixin.parseTopLevel (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12629:25)
+      at TypeScriptParserMixin.parse (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:14505:25)
+      at TypeScriptParserMixin.parse (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:10143:18)
+      at parse (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:14539:38)
+      at parseAst (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-utils/dist/esm/ast.js:7:9)
+      at detectCodeSplitGroupingsFromRoute (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/code-splitter/compilers.js:580:14)
+      at handleCompilingReferenceFile (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/router-code-splitter-plugin.js:60:20)
+      at TransformPluginContext.handler (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/router-code-splitter-plugin.js:151:36)
+      at TransformPluginContext.<anonymous> (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/unplugin/dist/index.mjs:841:19)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:28817:51)
+      at async loadAndTransform (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:22686:26)
+      at async viteTransformMiddleware (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:24562:20)
+SyntaxError: Identifier 'isAdmin' has already been declared. (126:16)
+    at constructor (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:365:19)
+    ... 49 lines matching cause stack trace ...
+    at async EventEmitter.listenerForInvokeHandler (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:25908:13) {
+  cause: Error [SyntaxError]: Identifier 'isAdmin' has already been declared. (126:16)
+      at constructor (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptScopeHandler.checkRedeclarationInScope (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:1619:19)
+      at TypeScriptScopeHandler.declareName (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:1585:12)
+      at TypeScriptScopeHandler.declareName (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:4892:11)
+      at TypeScriptParserMixin.declareNameFromIdentifier (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7584:16)
+      at TypeScriptParserMixin.checkIdentifier (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7580:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7517:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7561:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7561:12)
+      at TypeScriptParserMixin.checkLVal (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:7557:16)
+      at TypeScriptParserMixin.parseVarId (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13429:10)
+      at TypeScriptParserMixin.parseVarId (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9769:11)
+      at TypeScriptParserMixin.parseVar (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13400:12)
+      at TypeScriptParserMixin.parseVarStatement (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13247:10)
+      at TypeScriptParserMixin.parseVarStatement (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9425:31)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12868:23)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13314:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12117:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12103:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9189:18)
+      at C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13462:12
+      at TypeScriptParserMixin.withSmartMixTopicForbiddingContext (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12420:14)
+      at TypeScriptParserMixin.parseFunction (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13461:10)
+      at TypeScriptParserMixin.parseFunctionStatement (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13142:17)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12808:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseModuleItem (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12761:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13333:36)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseProgram (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12639:10)
+      at TypeScriptParserMixin.parseTopLevel (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:12629:25)
+      at TypeScriptParserMixin.parse (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:14505:25)
+      at TypeScriptParserMixin.parse (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:10143:18)
+      at parse (C:\Users\Win11\Documents\Sistema Advocacia\node_modules\@babel\parser\lib\index.js:14539:38)
+      at parseAst (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-utils/dist/esm/ast.js:7:9)
+      at detectCodeSplitGroupingsFromRoute (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/code-splitter/compilers.js:580:14)
+      at handleCompilingReferenceFile (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/router-code-splitter-plugin.js:60:20)
+      at TransformPluginContext.handler (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/router-plugin/dist/esm/core/router-code-splitter-plugin.js:151:36)
+      at TransformPluginContext.<anonymous> (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/unplugin/dist/index.mjs:841:19)
+      at EnvironmentPluginContainer.transform (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:28817:51)
+      at async loadAndTransform (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:22686:26)
+      at async fetchModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:34013:15)
+      at async handleInvoke (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:25853:21)
+      at async EventEmitter.listenerForInvokeHandler (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/chunks/config.js:25908:13) {
+    code: 'BABEL_PARSER_SYNTAX_ERROR',
+    reasonCode: 'VarRedeclaration',
+    loc: Position { line: 126, column: 16, index: 4159 },
+    pos: 4159,
+    syntaxPlugin: undefined,
+    plugin: 'tanstack-router:code-splitter:compile-reference-file',
+    id: 'C:/Users/Win11/Documents/Sistema Advocacia/src/routes/_app/app.suporte.tsx',
+    pluginCode: 'import { createFileRoute } from "@tanstack/react-router";\n' +
+      'import { useMemo, useState } from "react";\n' +
+      'import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";\n' +
+      'import {\n' +
+      '  LifeBuoy,\n' +
+      '  MessageCircle,\n' +
+      '  Mail,\n' +
+      '  BookOpen,\n' +
+      '  ChevronDown,\n' +
+      '  Send,\n' +
+      '  Clock,\n' +
+      '  CheckCircle2,\n' +
+      '  AlertCircle,\n' +
+      '  Loader2,\n' +
+      '  Inbox,\n' +
+      '  Shield,\n' +
+      '  Search,\n' +
+      '} from "lucide-react";\n' +
+      'import { toast } from "sonner";\n' +
+      'import { formatDistanceToNow } from "date-fns";\n' +
+      'import { ptBR } from "date-fns/locale";\n' +
+      'import { supabase } from "@/integrations/supabase/client";\n' +
+      'import { useAuth } from "@/hooks/use-auth";\n' +
+      'import { useActiveCompany } from "@/hooks/use-active-company";\n' +
+      'import { usePermissions } from "@/hooks/use-permissions";\n' +
+      'import { useCompanyMembers } from "@/hooks/use-company-members";\n' +
+      'import { PageHeader } from "@/components/app/page-header";\n' +
+      'import { Button } from "@/components/ui/button";\n' +
+      'import { Input } from "@/components/ui/input";\n' +
+      'import { Label } from "@/components/ui/label";\n' +
+      'import { Textarea } from "@/components/ui/textarea";\n' +
+      'import { Badge } from "@/components/ui/badge";\n' +
+      'import { Skeleton } from "@/components/ui/skeleton";\n' +
+      'import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";\n' +
+      'import {\n' +
+      '  Select,\n' +
+      '  SelectContent,\n' +
+      '  SelectItem,\n' +
+      '  SelectTrigger,\n' +
+      '  SelectValue,\n' +
+      '} from "@/components/ui/select";\n' +
+      'import { cn } from "@/lib/utils";\n' +
+      '\n' +
+      'export const Route = createFileRoute("/_app/app/suporte")({ component: SuportePage });\n' +
+      '\n' +
+      'type TicketStatus = "open" | "in_progress" | "resolved" | "closed";\n' +
+      'type TicketPriority = "low" | "normal" | "high" | "urgent";\n' +
+      '\n' +
+      'type Ticket = {\n' +
+      '  id: string;\n' +
+      '  subject: string;\n' +
+      '  message: string;\n' +
+      '  status: TicketStatus;\n' +
+      '  priority: TicketPriority;\n' +
+      '  response: string | null;\n' +
+      '  responded_at: string | null;\n' +
+      '  responded_by: string | null;\n' +
+      '  user_id: string;\n' +
+      '  created_at: string;\n' +
+      '};\n' +
+      '\n' +
+      'const FAQ = [\n' +
+      '  {\n' +
+      '    q: "Como cadastrar um novo cliente?",\n' +
+      `    a: "Acesse o menu Clientes e clique em 'Novo cliente'. Preencha os dados e salve. O cliente ficará imediatamente disponível para vincular a processos e tarefas.",\n` +
+      '  },\n' +
+      '  {\n' +
+      '    q: "Como vincular uma tarefa a um processo?",\n' +
+      `    a: "No Kanban, ao criar ou editar uma tarefa, selecione o processo no campo 'Processo'. A tarefa aparecerá no histórico do processo.",\n` +
+      '  },\n' +
+      '  {\n' +
+      '    q: "Como funciona a multiempresa?",\n' +
+      '    a: "Cada conta possui um escritório ativo. Todos os dados são isolados por escritório, garantindo total privacidade entre organizações.",\n' +
+      '  },\n' +
+      '  {\n' +
+      '    q: "Como gerar uma peça jurídica com IA?",\n' +
+      `    a: "Acesse 'Criação de peças', escolha o tipo, descreva o assunto e clique em 'Gerar com IA'. Você pode copiar e ajustar a minuta gerada.",\n` +
+      '  },\n' +
+      '  {\n' +
+      '    q: "Como recebo notificações de prazos?",\n' +
+      `    a: "A página 'Alertas' centraliza tarefas atrasadas, prazos próximos e eventos da semana. Visite-a periodicamente.",\n` +
+      '  },\n' +
+      '];\n' +
+      '\n' +
+      'const STATUS_LABEL: Record<TicketStatus, string> = {\n' +
+      '  open: "Aberto",\n' +
+      '  in_progress: "Em atendimento",\n' +
+      '  resolved: "Resolvido",\n' +
+      '  closed: "Fechado",\n' +
+      '};\n' +
+      '\n' +
+      'const STATUS_STYLE: Record<TicketStatus, string> = {\n' +
+      '  open: "bg-amber-500/10 text-amber-700 border-amber-500/20",\n' +
+      '  in_progress: "bg-blue-500/10 text-blue-700 border-blue-500/20",\n' +
+      '  resolved: "bg-emerald-500/10 text-emerald-700 border-emerald-500/20",\n' +
+      '  closed: "bg-muted text-muted-foreground border-border",\n' +
+      '};\n' +
+      '\n' +
+      'const PRIORITY_LABEL: Record<TicketPriority, string> = {\n' +
+      '  low: "Baixa",\n' +
+      '  normal: "Normal",\n' +
+      '  high: "Alta",\n' +
+      '  urgent: "Urgente",\n' +
+      '};\n' +
+      '\n' +
+      'const PRIORITY_STYLE: Record<TicketPriority, string> = {\n' +
+      '  low: "bg-muted text-muted-foreground border-border",\n' +
+      '  normal: "bg-muted text-muted-foreground border-border",\n' +
+      '  high: "bg-orange-500/10 text-orange-700 border-orange-500/20",\n' +
+      '  urgent: "bg-rose-500/10 text-rose-700 border-rose-500/20",\n' +
+      '};\n' +
+      '\n' +
+      'function SuportePage() {\n' +
+      '  const { user } = useAuth();\n' +
+      '  const { companyId } = useActiveCompany();\n' +
+      '  const { isAdmin } = usePermissions();\n' +
+      '  const qc = useQueryClient();\n' +
+      '  const [openIdx, setOpenIdx] = useState<number | null>(0);\n' +
+      '  const [form, setForm] = useState({\n' +
+      '    subject: "",\n' +
+      '    message: "",\n' +
+      '    priority: "normal" as TicketPriority,\n' +
+      '  });\n' +
+      '\n' +
+      '  // Verificar se o usuário é owner/admin da empresa ativa\n' +
+      '  const { data: isAdmin = false } = useQuery({\n' +
+      '    queryKey: ["is-support-admin", user?.id, companyId],\n' +
+      '    enabled: !!user && !!companyId,\n' +
+      '    queryFn: async () => {\n' +
+      '      const { data, error } = await supabase\n' +
+      '        .from("user_roles")\n' +
+      '        .select("role")\n' +
+      '        .eq("user_id", user!.id)\n' +
+      '        .eq("company_id", companyId!)\n' +
+      '        .in("role", ["owner", "admin"]);\n' +
+      '      if (error) throw error;\n' +
+      '      return (data ?? []).length > 0;\n' +
+      '    },\n' +
+      '  });\n' +
+      '\n' +
+      '  const { data: tickets = [], isLoading } = useQuery({\n' +
+      '    queryKey: ["support-tickets", user?.id],\n' +
+      '    enabled: !!user,\n' +
+      '    queryFn: async () => {\n' +
+      '      const { data, error } = await supabase\n' +
+      '        .from("support_tickets")\n' +
+      '        .select(\n' +
+      '          "id, subject, message, status, priority, response, responded_at, responded_by, user_id, created_at",\n' +
+      '        )\n' +
+      '        .eq("user_id", user!.id)\n' +
+      '        .order("created_at", { ascending: false })\n' +
+      '        .limit(20);\n' +
+      '      if (error) throw error;\n' +
+      '      return (data ?? []) as Ticket[];\n' +
+      '    },\n' +
+      '  });\n' +
+      '\n' +
+      '  const createMut = useMutation({\n' +
+      '    mutationFn: async () => {\n' +
+      '      if (!companyId || !user) throw new Error("Empresa não selecionada");\n' +
+      '      if (!form.subject.trim() || !form.message.trim()) {\n' +
+      '        throw new Error("Preencha assunto e mensagem");\n' +
+      '      }\n' +
+      '      const { error } = await supabase.from("support_tickets").insert({\n' +
+      '        company_id: companyId,\n' +
+      '        user_id: user.id,\n' +
+      '        subject: form.subject.trim(),\n' +
+      '        message: form.message.trim(),\n' +
+      '        priority: form.priority,\n' +
+      '      });\n' +
+      '      if (error) throw error;\n' +
+      '    },\n' +
+      '    onSuccess: () => {\n' +
+      '      toast.success("Chamado aberto", {\n' +
+      '        description: "Nossa equipe responderá em até 24h úteis.",\n' +
+      '      });\n' +
+      '      setForm({ subject: "", message: "", priority: "normal" });\n' +
+      '      qc.invalidateQueries({ queryKey: ["support-tickets", user?.id] });\n' +
+      '    },\n' +
+      '    onError: (e: Error) => toast.error("Erro", { description: e.message }),\n' +
+      '  });\n' +
+      '\n' +
+      '  return (\n' +
+      '    <div className="max-w-5xl mx-auto">\n' +
+      '      <PageHeader\n' +
+      '        title="Suporte"\n' +
+      '        subtitle="Central de ajuda — encontre respostas ou abra um chamado."\n' +
+      '      />\n' +
+      '\n' +
+      '      {isAdmin ? (\n' +
+      '        <Tabs defaultValue="user" className="w-full">\n' +
+      '          <TabsList className="mb-4">\n' +
+      '            <TabsTrigger value="user">Minha central</TabsTrigger>\n' +
+      '            <TabsTrigger value="admin" className="gap-1.5">\n' +
+      '              <Shield className="h-3.5 w-3.5" /> Administração\n' +
+      '            </TabsTrigger>\n' +
+      '          </TabsList>\n' +
+      '          <TabsContent value="user">\n' +
+      '            <UserView\n' +
+      '              FAQ={FAQ}\n' +
+      '              openIdx={openIdx}\n' +
+      '              setOpenIdx={setOpenIdx}\n' +
+      '              form={form}\n' +
+      '              setForm={setForm}\n' +
+      '              createMut={createMut}\n' +
+      '              tickets={tickets}\n' +
+      '              isLoading={isLoading}\n' +
+      '            />\n' +
+      '          </TabsContent>\n' +
+      '          <TabsContent value="admin">\n' +
+      '            <AdminPanel companyId={companyId} />\n' +
+      '          </TabsContent>\n' +
+      '        </Tabs>\n' +
+      '      ) : (\n' +
+      '        <UserView\n' +
+      '          FAQ={FAQ}\n' +
+      '          openIdx={openIdx}\n' +
+      '          setOpenIdx={setOpenIdx}\n' +
+      '          form={form}\n' +
+      '          setForm={setForm}\n' +
+      '          createMut={createMut}\n' +
+      '          tickets={tickets}\n' +
+      '          isLoading={isLoading}\n' +
+      '        />\n' +
+      '      )}\n' +
+      '    </div>\n' +
+      '  );\n' +
+      '}\n' +
+      '\n' +
+      'function UserView({\n' +
+      '  FAQ,\n' +
+      '  openIdx,\n' +
+      '  setOpenIdx,\n' +
+      '  form,\n' +
+      '  setForm,\n' +
+      '  createMut,\n' +
+      '  tickets,\n' +
+      '  isLoading,\n' +
+      '}: {\n' +
+      '  FAQ: { q: string; a: string }[];\n' +
+      '  openIdx: number | null;\n' +
+      '  setOpenIdx: (n: number | null) => void;\n' +
+      '  form: { subject: string; message: string; priority: TicketPriority };\n' +
+      '  setForm: (f: { subject: string; message: string; priority: TicketPriority }) => void;\n' +
+      '  createMut: { mutate: () => void; isPending: boolean };\n' +
+      '  tickets: Ticket[];\n' +
+      '  isLoading: boolean;\n' +
+      '}) {\n' +
+      '  return (\n' +
+      '    <>\n' +
+      '      <div className="grid md:grid-cols-3 gap-3 mb-6">\n' +
+      '        <ChannelCard\n' +
+      '          icon={MessageCircle}\n' +
+      '          title="Chat ao vivo"\n' +
+      '          description="Resposta em minutos"\n' +
+      '          tone="text-emerald-600 bg-emerald-500/10"\n' +
+      '        />\n' +
+      '        <ChannelCard\n' +
+      '          icon={Mail}\n' +
+      '          title="suporte@lexia.app"\n' +
+      '          description="Resposta em 24h"\n' +
+      '          tone="text-primary bg-primary-soft"\n' +
+      '        />\n' +
+      '        <ChannelCard\n' +
+      '          icon={BookOpen}\n' +
+      '          title="Base de conhecimento"\n' +
+      '          description="Artigos e tutoriais"\n' +
+      '          tone="text-violet-600 bg-violet-500/10"\n' +
+      '        />\n' +
+      '      </div>\n' +
+      '\n' +
+      '      <div className="grid lg:grid-cols-2 gap-4 mb-6">\n' +
+      '        <section className="rounded-xl border bg-card p-5 shadow-soft">\n' +
+      '          <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">\n' +
+      '            <LifeBuoy className="h-4 w-4" /> Perguntas frequentes\n' +
+      '          </h3>\n' +
+      '          <ul className="divide-y">\n' +
+      '            {FAQ.map((item, idx) => {\n' +
+      '              const open = openIdx === idx;\n' +
+      '              return (\n' +
+      '                <li key={idx} className="py-2">\n' +
+      '                  <button\n' +
+      '                    onClick={() => setOpenIdx(open ? null : idx)}\n' +
+      '                    className="w-full flex items-center justify-between gap-3 py-1.5 text-left text-sm font-medium hover:text-primary transition"\n' +
+      '                  >\n' +
+      '                    {item.q}\n' +
+      '                    <ChevronDown\n' +
+      '                      className={cn(\n' +
+      '                        "h-4 w-4 text-muted-foreground transition-transform shrink-0",\n' +
+      '                        open && "rotate-180",\n' +
+      '                      )}\n' +
+      '                    />\n' +
+      '                  </button>\n' +
+      '                  {open && (\n' +
+      '                    <p className="text-sm text-muted-foreground pb-2 pt-1 animate-fade-in">\n' +
+      '                      {item.a}\n' +
+      '                    </p>\n' +
+      '                  )}\n' +
+      '                </li>\n' +
+      '              );\n' +
+      '            })}\n' +
+      '          </ul>\n' +
+      '        </section>\n' +
+      '\n' +
+      '        <section className="rounded-xl border bg-card p-5 shadow-soft">\n' +
+      '          <h3 className="text-sm font-semibold mb-4 flex items-center gap-2">\n' +
+      '            <Send classN'... 18518 more characters,
+    frame: '124 |  \n' +
+      '125 |    // Verificar se o usuário é owner/admin da empresa ativa\n' +
+      '126 |    const { data: isAdmin = false } = useQuery({\n' +
+      '    |                  ^\n' +
+      '127 |      queryKey: ["is-support-admin", user?.id, companyId],\n' +
+      '128 |      enabled: !!user && !!companyId,',
+    runnerError: Error: RunnerError
+        at reviveInvokeError (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:476:64)
+        at Object.invoke (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:549:11)
+        at async ModuleRunner.getModuleInformation (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:1086:7)
+        at async request (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:1103:83)
+        at async eval (eval at runInlinedModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:13:31)
+        at async ESModulesEvaluator.runInlinedModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:913:3)
+        at async ModuleRunner.directRequest (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:1146:59)
+        at async ModuleRunner.cachedRequest (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:1053:73)
+        at async eval (eval at runInlinedModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:6:31)
+        at async ESModulesEvaluator.runInlinedModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:913:3)
+        at async ModuleRunner.directRequest (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:1146:59)
+  },
+  status: 500,
+  statusText: undefined,
+  headers: undefined,
+  data: undefined,
+  body: undefined,
+  unhandled: true
+}
+Error: h3 swallowed SSR error: {"status":500,"unhandled":true,"message":"HTTPError"}
+    at normalizeCatastrophicSsrResponse (eval at runInlinedModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:50:73)
+    at async Object.fetch (eval at runInlinedModule (file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:58:14)
+    at async file:///C:/Users/Win11/Documents/Sistema%20Advocacia/node_modules/@tanstack/start-plugin-core/dist/esm/vite/dev-server-plugin/plugin.js:71:36
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })

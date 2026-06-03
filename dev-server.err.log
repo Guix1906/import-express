@@ -1,0 +1,601 @@
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+Error: Invalid server function ID: eyJmaWxlIjoiL3NyYy9saWIvdGVhbS5mdW5jdGlvbnMudHM_dHNzLXNlcnZlcmZuLXNwbGl0IiwiZXhwb3J0IjoibGlzdENvbXBhbnlUZWFtTWVtYmVyc19jcmVhdGVTZXJ2ZXJGbl9oYW5kbGVyIn0
+    at LoadPluginContext._formatLog (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29019:43)
+    at LoadPluginContext.error (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29016:14)
+    at LoadPluginContext.handler (file:///C:/Users/Win11/Documents/New%20project/node_modules/@tanstack/start-plugin-core/dist/esm/vite/start-compiler-plugin/plugin.js:290:11)
+    at async EnvironmentPluginContainer.load (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:28779:19)
+    at async loadAndTransform (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:22644:21) {
+  plugin: 'tanstack-start-core:validate-server-fn-id',
+  runnerError: Error: RunnerError
+      at reviveInvokeError (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:476:64)
+      at Object.invoke (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:549:11)
+      at async ModuleRunner.getModuleInformation (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:1086:7)
+      at async request (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:1103:83)
+      at async getServerFnById (C:\Users\Win11\Documents\New project\#tanstack-start-server-fn-resolver:4:3)
+      at async handleServerAction (eval at runInlinedModule (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:23:17)
+      at async next (eval at runInlinedModule (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:116:16)
+      at async eval (eval at runInlinedModule (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:12:12)
+      at async next (eval at runInlinedModule (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:116:16)
+      at async startRequestResolver (eval at runInlinedModule (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:913:9), <anonymous>:215:40)
+}
+Error: Invalid server function ID: eyJmaWxlIjoiL3NyYy9saWIvdHJpYWdlbS1mbG93LmZ1bmN0aW9ucy50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJsaXN0VHJpYWdlbnNBZG1pbl9jcmVhdGVTZXJ2ZXJGbl9oYW5kbGVyIn0
+    at LoadPluginContext._formatLog (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29019:43)
+    at LoadPluginContext.error (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29016:14)
+    at LoadPluginContext.handler (file:///C:/Users/Win11/Documents/New%20project/node_modules/@tanstack/start-plugin-core/dist/esm/vite/start-compiler-plugin/plugin.js:290:11)
+    at async EnvironmentPluginContainer.load (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:28779:19)
+    at async loadAndTransform (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:22644:21) {
+  plugin: 'tanstack-start-core:validate-server-fn-id',
+  runnerError: Error: RunnerError
+      at reviveInvokeError (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:476:64)
+      at Object.invoke (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:549:11)
+      at async ModuleRunner.getModuleInformation (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:1086:7)
+}
+Error: Invalid server function ID: eyJmaWxlIjoiL3NyYy9saWIvdHJpYWdlbS1mbG93LmZ1bmN0aW9ucy50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJsaXN0VHJpYWdlbnNBZG1pbl9jcmVhdGVTZXJ2ZXJGbl9oYW5kbGVyIn0
+    at LoadPluginContext._formatLog (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29019:43)
+    at LoadPluginContext.error (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29016:14)
+    at LoadPluginContext.handler (file:///C:/Users/Win11/Documents/New%20project/node_modules/@tanstack/start-plugin-core/dist/esm/vite/start-compiler-plugin/plugin.js:290:11)
+    at async EnvironmentPluginContainer.load (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:28779:19)
+    at async loadAndTransform (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:22644:21) {
+  plugin: 'tanstack-start-core:validate-server-fn-id',
+  runnerError: Error: RunnerError
+      at reviveInvokeError (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:476:64)
+      at Object.invoke (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:549:11)
+      at async ModuleRunner.getModuleInformation (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:1086:7)
+}
+Error: Invalid server function ID: eyJmaWxlIjoiL3NyYy9saWIvdHJpYWdlbS1mbG93LmZ1bmN0aW9ucy50cz90c3Mtc2VydmVyZm4tc3BsaXQiLCJleHBvcnQiOiJsaXN0VHJpYWdlbnNBZG1pbl9jcmVhdGVTZXJ2ZXJGbl9oYW5kbGVyIn0
+    at LoadPluginContext._formatLog (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29019:43)
+    at LoadPluginContext.error (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:29016:14)
+    at LoadPluginContext.handler (file:///C:/Users/Win11/Documents/New%20project/node_modules/@tanstack/start-plugin-core/dist/esm/vite/start-compiler-plugin/plugin.js:290:11)
+    at async EnvironmentPluginContainer.load (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:28779:19)
+    at async loadAndTransform (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/chunks/config.js:22644:21) {
+  plugin: 'tanstack-start-core:validate-server-fn-id',
+  runnerError: Error: RunnerError
+      at reviveInvokeError (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:476:64)
+      at Object.invoke (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:549:11)
+      at async ModuleRunner.getModuleInformation (file:///C:/Users/Win11/Documents/New%20project/node_modules/vite/dist/node/module-runner.js:1086:7)
+}
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7178 |    initial-value: 0;
+7179 |  }
+7180 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7181 |  :root {
+7182 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7183 |    initial-value: 0;
+7184 |  }
+7185 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7186 |  :root {
+7187 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+[33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+7189 |    initial-value: 0;
+7190 |  }
+7191 |  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&dis...
+     |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7192 |  :root {
+7193 |    --radius: 0.625rem;[39m
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })
+TanStack Start server functions are not protected by the CSRF middleware.
+
+Server functions are same-origin RPC endpoints and should be protected from cross-site requests.
+
+Add the CSRF middleware in src/start.ts:
+
+  const csrfMiddleware = createCsrfMiddleware({
+    filter: (ctx) => ctx.handlerType === 'serverFn',
+  })
+
+  export const startInstance = createStart(() => ({
+    requestMiddleware: [csrfMiddleware],
+  }))
+
+If you intentionally handle CSRF another way, disable this warning:
+
+  tanstackStart({
+    serverFns: {
+      disableCsrfMiddlewareWarning: true,
+    },
+  })

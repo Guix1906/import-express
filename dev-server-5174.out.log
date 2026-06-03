@@ -1,0 +1,82 @@
+
+> dev
+> vite dev --host 127.0.0.1 --port 5174
+
+[2m09:40:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because vite config has changed
+
+  [32m[1mVITE[22m v7.3.3[39m  [2mready in [0m[1m9748[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m5174[22m/[39m
+[vite] connected.
+[2m11:06:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ new dependencies optimized: [33m@tanstack/router-core/ssr/client, @tanstack/router-core/isServer, @tanstack/router-core, h3-v2, seroval, @tanstack/router-core/ssr/server, @tanstack/history[32m[39m
+[2m11:06:23[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m11:12:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app.tsx?tsr-split=component, /src/routes/_app/app.index.tsx?tsr-split=component, /src/components/app/topbar.tsx, /src/components/app/new-case-wizard.tsx, /src/components/app/quick-add-task.tsx, /src/routes/_app/app.financeiro.tsx?tsr-split=component, /src/routes/_app/app.contratos.tsx?tsr-split=component, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component, /src/components/app/create-board-dialog.tsx, /src/routes/_app/app.processos.tsx?tsr-split=component, /src/routes/_app/app.triagem.tsx?tsr-split=component, /src/routes/_app/app.clientes.tsx?tsr-split=component, /src/routes/_app/app.agenda.tsx?tsr-split=component, /src/routes/_app/app.producao-escritorio.tsx?tsr-split=component, /src/routes/_app/app.equipe.tsx?tsr-split=component, /src/routes/_app/app.suporte.tsx?tsr-split=component, /src/routes/_app/app.configuracoes.tsx?tsr-split=component, /src/routes/_app/app.documentos.tsx?tsr-split=component, /src/routes/_app/app.triagem.$id.tsx?tsr-split=component[22m
+[2m11:12:30[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/hooks/use-active-company.tsx[22m
+[vite] program reload
+[2m11:12:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.configuracoes.tsx, /src/routes/_app/app.configuracoes.tsx?tsr-split=component[22m
+[2m11:12:30[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.configuracoes.tsx[22m
+[2m11:12:30[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.agenda.tsx, /src/routes/_app/app.agenda.tsx?tsr-split=component[22m
+[2m11:12:30[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.agenda.tsx[22m
+[2m11:13:19[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.suporte.tsx, /src/routes/_app/app.suporte.tsx?tsr-split=component[22m
+[2m11:13:19[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.suporte.tsx[22m
+[2m11:13:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.suporte.tsx, /src/routes/_app/app.suporte.tsx?tsr-split=component[22m
+[2m11:13:36[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.suporte.tsx[22m
+[2m11:13:51[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.suporte.tsx, /src/routes/_app/app.suporte.tsx?tsr-split=component[22m
+[2m11:13:51[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.suporte.tsx[22m
+[2m11:20:33[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.index.tsx, /src/routes/_app/app.index.tsx?tsr-split=component[22m
+[2m11:20:33[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.index.tsx[22m
+[vite] program reload
+[2m11:21:03[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.suporte.tsx, /src/routes/_app/app.suporte.tsx?tsr-split=component[22m
+[2m11:21:03[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.suporte.tsx[22m
+[2m11:23:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.financeiro.tsx?tsr-split=component, /src/routes/_app/app.processos.tsx?tsr-split=component, /src/routes/_app/app.clientes.tsx?tsr-split=component[22m
+[2m11:23:57[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/lib/core-persistence.functions.ts[22m
+[2m11:24:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.contratos.tsx, /src/routes/_app/app.contratos.tsx?tsr-split=component[22m
+[2m11:24:22[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.contratos.tsx[22m
+[2m11:25:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.documentos.tsx, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m11:25:22[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.documentos.tsx[22m
+[2m11:25:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.documentos.tsx, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m11:25:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.documentos.tsx[22m
+[2m11:26:20[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.documentos.tsx, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m11:26:20[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.documentos.tsx[22m
+[2m11:26:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.documentos.tsx, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m11:26:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.documentos.tsx[22m
+[2m11:27:39[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.documentos.tsx, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m11:27:39[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.documentos.tsx[22m
+[2m11:27:53[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.documentos.tsx, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m11:27:53[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.documentos.tsx[22m
+[2m11:42:02[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.atendimentos.tsx, /src/routes/_app/app.atendimentos.tsx?tsr-split=component[22m
+[2m11:42:02[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.atendimentos.tsx[22m
+[vite] program reload
+[2m11:42:46[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.atendimentos.tsx, /src/routes/_app/app.atendimentos.tsx?tsr-split=component[22m
+[2m11:42:46[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.atendimentos.tsx[22m
+[2m11:43:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.publicacoes.tsx, /src/routes/_app/app.publicacoes.tsx?tsr-split=component[22m
+[2m11:43:38[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.publicacoes.tsx[22m
+[2m11:44:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.publicacoes.tsx, /src/routes/_app/app.publicacoes.tsx?tsr-split=component[22m
+[2m11:44:35[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.publicacoes.tsx[22m
+[2m12:19:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.financeiro.tsx?tsr-split=component, /src/routes/_app/app.processos.tsx?tsr-split=component, /src/routes/_app/app.clientes.tsx?tsr-split=component, /src/routes/_app/app.contratos.tsx?tsr-split=component, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m12:19:32[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/lib/core-persistence.functions.ts[22m
+[vite] program reload
+[2m12:19:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component, /src/components/meu-quadro/AddColumnButton.tsx, /src/components/meu-quadro/KanbanColumn.tsx, /src/components/meu-quadro/KanbanCardItem.tsx[22m
+[2m12:19:32[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/meu-quadro/shared.ts[22m
+[2m12:19:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/app/create-board-dialog.tsx[22m
+[2m12:19:32[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/lib/boards.functions.ts[22m
+[2m12:29:41[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.financeiro.tsx?tsr-split=component, /src/routes/_app/app.processos.tsx?tsr-split=component, /src/routes/_app/app.clientes.tsx?tsr-split=component, /src/routes/_app/app.contratos.tsx?tsr-split=component, /src/routes/_app/app.documentos.tsx?tsr-split=component[22m
+[2m12:29:41[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/lib/core-persistence.functions.ts[22m
+[2m12:36:14[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.meu-quadro.tsx, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component[22m
+[2m12:36:14[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.meu-quadro.tsx[22m
+[vite] program reload
+[2m12:47:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app.tsx?tsr-split=component, /src/routes/_app/app.index.tsx?tsr-split=component, /src/components/app/topbar.tsx, /src/components/app/new-case-wizard.tsx, /src/components/app/quick-add-task.tsx, /src/routes/_app/app.financeiro.tsx?tsr-split=component, /src/routes/_app/app.contratos.tsx?tsr-split=component, /src/routes/_app/app.suporte.tsx?tsr-split=component, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component, /src/components/app/create-board-dialog.tsx, /src/routes/_app/app.processos.tsx?tsr-split=component, /src/routes/_app/app.triagem.tsx?tsr-split=component, /src/routes/_app/app.clientes.tsx?tsr-split=component, /src/routes/_app/app.agenda.tsx?tsr-split=component, /src/routes/_app/app.producao-escritorio.tsx?tsr-split=component, /src/routes/_app/app.equipe.tsx?tsr-split=component, /src/routes/_app/app.configuracoes.tsx?tsr-split=component, /src/routes/_app/app.documentos.tsx?tsr-split=component, /src/routes/_app/app.triagem.$id.tsx?tsr-split=component, /src/routes/_app/app.atendimentos.tsx?tsr-split=component, /src/routes/_app/app.publicacoes.tsx?tsr-split=component, /src/routes/_app/app.sala-advogado.tsx?tsr-split=component[22m
+[2m12:47:04[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/hooks/use-active-company.tsx[22m
+[vite] program reload
+[2m12:47:04[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/app/create-board-dialog.tsx[22m
+[2m12:47:04[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/app/create-board-dialog.tsx[22m
+[2m12:47:27[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.meu-quadro.tsx, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component[22m
+[2m12:47:27[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.meu-quadro.tsx[22m
+[2m12:48:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/app/create-board-dialog.tsx[22m
+[2m12:48:32[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/app/create-board-dialog.tsx[22m
+[2m12:48:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/components/app/create-board-dialog.tsx[22m
+[2m12:48:52[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/components/app/create-board-dialog.tsx[22m
+[2m12:49:16[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app.tsx?tsr-split=component, /src/routes/_app/app.index.tsx?tsr-split=component, /src/components/app/topbar.tsx, /src/components/app/new-case-wizard.tsx, /src/components/app/quick-add-task.tsx, /src/routes/_app/app.financeiro.tsx?tsr-split=component, /src/routes/_app/app.contratos.tsx?tsr-split=component, /src/routes/_app/app.suporte.tsx?tsr-split=component, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component, /src/components/app/create-board-dialog.tsx, /src/routes/_app/app.processos.tsx?tsr-split=component, /src/routes/_app/app.triagem.tsx?tsr-split=component, /src/routes/_app/app.clientes.tsx?tsr-split=component, /src/routes/_app/app.agenda.tsx?tsr-split=component, /src/routes/_app/app.producao-escritorio.tsx?tsr-split=component, /src/routes/_app/app.equipe.tsx?tsr-split=component, /src/routes/_app/app.configuracoes.tsx?tsr-split=component, /src/routes/_app/app.documentos.tsx?tsr-split=component, /src/routes/_app/app.triagem.$id.tsx?tsr-split=component, /src/routes/_app/app.atendimentos.tsx?tsr-split=component, /src/routes/_app/app.publicacoes.tsx?tsr-split=component, /src/routes/_app/app.sala-advogado.tsx?tsr-split=component[22m
+[2m12:49:16[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/hooks/use-active-company.tsx[22m
+[2m12:49:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css?direct, /src/routes/_app/app.meu-quadro.tsx, /src/routes/_app/app.meu-quadro.tsx?tsr-split=component[22m
+[2m12:49:18[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/routes/_app/app.meu-quadro.tsx[22m

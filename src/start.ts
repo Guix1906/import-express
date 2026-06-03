@@ -1,24 +1,36 @@
-import { createStart, createMiddleware } from "@tanstack/react-start";
+import { createMiddleware, createStart } from "@tanstack/react-start";
 
-import { renderErrorPage } from "./lib/error-page";
-import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
+function hasTrustedOrigin(request: Request): boolean {
+  const requestOrigin = new URL(request.url).origin;
+  const origin = request.headers.get("origin");
+  const referer = request.headers.get("referer");
+  const fetchSite = request.headers.get("sec-fetch-site");
 
-const errorMiddleware = createMiddleware().server(async ({ next }) => {
-  try {
-    return await next();
-  } catch (error) {
-    if (error != null && typeof error === "object" && "statusCode" in error) {
-      throw error;
-    }
-    console.error(error);
-    return new Response(renderErrorPage(), {
-      status: 500,
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
+  if (fetchSite === "cross-site") {
+    return false;
   }
-});
+
+  if (origin) {
+    return origin === requestOrigin;
+  }
+
+  if (referer) {
+    return new URL(referer).origin === requestOrigin;
+  }
+
+  return fetchSite === "same-origin" || fetchSite === "same-site" || fetchSite === "none";
+}
+
+const csrfMiddleware = createMiddleware({ type: "request" }).server(
+  async ({ request, serverFnMeta, next }) => {
+    if (serverFnMeta && !hasTrustedOrigin(request)) {
+      return new Response("Forbidden", { status: 403 });
+    }
+
+    return next();
+  },
+);
 
 export const startInstance = createStart(() => ({
-  requestMiddleware: [errorMiddleware],
-  functionMiddleware: [attachSupabaseAuth],
+  requestMiddleware: [csrfMiddleware],
 }));

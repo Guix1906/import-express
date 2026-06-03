@@ -1,2 +1,0 @@
-ALTER TABLE public.production_cards DROP CONSTRAINT production_cards_column_key_check;
-ALTER TABLE public.production_cards ADD CONSTRAINT production_cards_column_key_check CHECK (column_key = ANY (ARRAY['pre_atendimento'::text,'para_producao'::text,'para_protocolo_judicial'::text,'protocolados_adm'::text,'intermediarias'::text,'arquivados'::text,'concluidos'::text,'em_revisao'::text,'pendencias'::text,'contrato_fechado'::text]));

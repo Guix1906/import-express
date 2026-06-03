@@ -1,1 +1,0 @@
-ALTER TABLE public.production_cards ADD COLUMN IF NOT EXISTS category text;

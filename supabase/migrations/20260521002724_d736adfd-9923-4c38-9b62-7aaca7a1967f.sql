@@ -1,1 +1,0 @@
-ALTER TABLE public.production_cards DROP CONSTRAINT IF EXISTS production_cards_column_key_check;

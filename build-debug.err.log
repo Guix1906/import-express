@@ -1,0 +1,28 @@
+Found 1 warning while optimizing generated CSS:
+
+[2m│   initial-value: 0;[22m
+[2m│ }[22m
+[2m│[22m @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ :root {[22m
+[2m│   --radius: 0.625rem;[22m
+
+[33m[plugin vite:reporter] 
+(!) C:/Users/Win11/Documents/New project/src/integrations/supabase/client.ts is dynamically imported by C:/Users/Win11/Documents/New project/src/integrations/supabase/server-fn-fetch.ts but also statically imported by C:/Users/Win11/Documents/New project/src/components/agenda/agenda-modals.tsx, C:/Users/Win11/Documents/New project/src/components/app/create-board-dialog.tsx, C:/Users/Win11/Documents/New project/src/components/app/global-search.tsx, C:/Users/Win11/Documents/New project/src/components/app/kanban-board.tsx, C:/Users/Win11/Documents/New project/src/components/app/new-case-wizard.tsx, C:/Users/Win11/Documents/New project/src/components/app/notification-bell.tsx, C:/Users/Win11/Documents/New project/src/components/app/publication-comments.tsx, C:/Users/Win11/Documents/New project/src/components/app/quick-add-task.tsx, C:/Users/Win11/Documents/New project/src/components/app/topbar.tsx, C:/Users/Win11/Documents/New project/src/components/quadros/CardDrawer.tsx, C:/Users/Win11/Documents/New project/src/hooks/use-active-company.tsx, C:/Users/Win11/Documents/New project/src/hooks/use-auth.tsx, C:/Users/Win11/Documents/New project/src/integrations/supabase/auth-attacher.ts, C:/Users/Win11/Documents/New project/src/routes/_app/app.agenda.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.atendimentos.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.clientes.$id.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.clientes.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.configuracoes.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.contratos.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.documentos.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.equipe.$id.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.index.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.meu-quadro.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.onboarding.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.processos.$id.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.producao-escritorio.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.publicacoes.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.quadros.$id.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.sala-advogado.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.suporte.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.triagem.$id.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/_app/app.triagem.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/forgot-password.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/login.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/register.tsx?tsr-split=component, C:/Users/Win11/Documents/New project/src/routes/reset-password.tsx?tsr-split=component, dynamic import will not move module into another chunk.
+[39m
+[33m
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+Found 1 warning while optimizing generated CSS:
+
+[2m│   initial-value: 0;[22m
+[2m│ }[22m
+[2m│[22m @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ :root {[22m
+[2m│   --radius: 0.625rem;[22m
+
