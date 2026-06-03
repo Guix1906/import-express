@@ -18,22 +18,27 @@ export const Route = createRootRoute({
       },
     ],
   }),
+  shellComponent: DocumentShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootComponent() {
+function DocumentShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
       <body>
-        <Outlet />
+        {children}
         <Scripts />
       </body>
     </html>
   );
+}
+
+function RootComponent() {
+  return <Outlet />;
 }
 
 function NotFoundComponent() {
