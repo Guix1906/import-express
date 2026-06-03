@@ -1,0 +1,1 @@
+UPDATE public.atendimentos SET status = 'em_atendimento' WHERE status = 'em_andamento';
