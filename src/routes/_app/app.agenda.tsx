@@ -206,9 +206,7 @@ function AgendaPage() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("tasks")
-        .select(
-          "id, title, description, due_date, priority, status, assigned_to, case_id, case:cases(title)",
-        )
+        .select("id, title, description, due_date, priority, status, assigned_to, case_id")
         .eq("company_id", companyId!);
       if (error) throw error;
       return data as RawTask[];
@@ -220,9 +218,7 @@ function AgendaPage() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("events")
-        .select(
-          "id, title, description, event_type, starts_at, ends_at, location, assigned_to, case_id, case:cases(title)",
-        )
+        .select("id, title, description, event_type, starts_at, ends_at, location, assigned_to, case_id")
         .eq("company_id", companyId!);
       if (error) throw error;
       return data as RawEvent[];

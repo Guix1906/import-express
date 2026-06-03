@@ -55,11 +55,13 @@ export function useActiveCompany() {
           .maybeSingle(),
       ]);
 
+      const role = roleRow?.role ?? (profile?.active_company_id ? "owner" : null);
+
       return {
         companyId,
         companyName: company?.name ?? null,
         fullName: profile?.full_name ?? null,
-        role: roleRow?.role ?? null,
+        role,
         hasWorkspace: true,
       } satisfies ActiveCompanyState;
     },

@@ -71,6 +71,8 @@ export const Route = createFileRoute("/_app/app/publicacoes")({
   component: PublicacoesPage,
 });
 
+const PUBLICACOES_ENABLED = false;
+
 type PubStatus = "not_handled" | "handled" | "discarded";
 
 type Publication = {
@@ -245,7 +247,7 @@ function PublicacoesPage() {
   // ---- list ----
   const { data: publications = [], isLoading } = useQuery({
     queryKey: ["publications", companyId],
-    enabled: !!companyId,
+    enabled: PUBLICACOES_ENABLED && !!companyId,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("publications")
@@ -265,7 +267,7 @@ function PublicacoesPage() {
     firstLoadRef.current = true;
   }, [companyId]);
   useEffect(() => {
-    if (!companyId) return;
+    if (!PUBLICACOES_ENABLED || !companyId) return;
     const ch = supabase
       .channel(`publications-${companyId}`)
       .on(
@@ -373,6 +375,9 @@ function PublicacoesPage() {
   // ---- mutations ----
   const createMut = useMutation({
     mutationFn: async () => {
+      if (!PUBLICACOES_ENABLED) {
+        throw new Error("Modulo de publicacoes ainda nao foi criado no banco.");
+      }
       if (!companyId || !user) throw new Error("Empresa não selecionada");
       const parsed = pubSchema.safeParse(form);
       if (!parsed.success) {
@@ -414,6 +419,9 @@ function PublicacoesPage() {
 
   const setStatusMut = useMutation({
     mutationFn: async ({ id, status }: { id: string; status: PubStatus }) => {
+      if (!PUBLICACOES_ENABLED) {
+        throw new Error("Modulo de publicacoes ainda nao foi criado no banco.");
+      }
       const patch: Partial<Publication> & { handled_by?: string | null } = { status };
       if (status === "not_handled") {
         patch.handled_at = null;
@@ -441,6 +449,9 @@ function PublicacoesPage() {
 
   const deleteMut = useMutation({
     mutationFn: async (id: string) => {
+      if (!PUBLICACOES_ENABLED) {
+        throw new Error("Modulo de publicacoes ainda nao foi criado no banco.");
+      }
       const { error } = await supabase.from("publications").delete().eq("id", id);
       if (error) throw error;
     },
@@ -488,6 +499,9 @@ function PublicacoesPage() {
   // ---- bulk + assign ----
   const bulkMut = useMutation({
     mutationFn: async ({ ids, status }: { ids: string[]; status: PubStatus }) => {
+      if (!PUBLICACOES_ENABLED) {
+        throw new Error("Modulo de publicacoes ainda nao foi criado no banco.");
+      }
       const patch: {
         status: PubStatus;
         handled_at: string | null;
@@ -510,6 +524,9 @@ function PublicacoesPage() {
 
   const bulkDeleteMut = useMutation({
     mutationFn: async (ids: string[]) => {
+      if (!PUBLICACOES_ENABLED) {
+        throw new Error("Modulo de publicacoes ainda nao foi criado no banco.");
+      }
       const { error } = await supabase.from("publications").delete().in("id", ids);
       if (error) throw error;
     },
@@ -523,6 +540,9 @@ function PublicacoesPage() {
 
   const assignMut = useMutation({
     mutationFn: async ({ id, userId }: { id: string; userId: string | null }) => {
+      if (!PUBLICACOES_ENABLED) {
+        throw new Error("Modulo de publicacoes ainda nao foi criado no banco.");
+      }
       const { error } = await supabase
         .from("publications")
         .update({ assigned_to: userId })

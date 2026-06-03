@@ -22,6 +22,7 @@ import { ptBR } from "date-fns/locale";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useActiveCompany } from "@/hooks/use-active-company";
+import { usePermissions } from "@/hooks/use-permissions";
 import { useCompanyMembers } from "@/hooks/use-company-members";
 import { PageHeader } from "@/components/app/page-header";
 import { Button } from "@/components/ui/button";
@@ -109,9 +110,12 @@ const PRIORITY_STYLE: Record<TicketPriority, string> = {
   urgent: "bg-rose-500/10 text-rose-700 border-rose-500/20",
 };
 
+const SUPPORT_TICKETS_ENABLED = false;
+
 function SuportePage() {
   const { user } = useAuth();
   const { companyId } = useActiveCompany();
+  const { isAdmin } = usePermissions();
   const qc = useQueryClient();
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [form, setForm] = useState({
@@ -119,26 +123,9 @@ function SuportePage() {
     message: "",
     priority: "normal" as TicketPriority,
   });
-
-  // Verificar se o usuário é owner/admin da empresa ativa
-  const { data: isAdmin = false } = useQuery({
-    queryKey: ["is-support-admin", user?.id, companyId],
-    enabled: !!user && !!companyId,
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user!.id)
-        .eq("company_id", companyId!)
-        .in("role", ["owner", "admin"]);
-      if (error) throw error;
-      return (data ?? []).length > 0;
-    },
-  });
-
   const { data: tickets = [], isLoading } = useQuery({
     queryKey: ["support-tickets", user?.id],
-    enabled: !!user,
+    enabled: SUPPORT_TICKETS_ENABLED && !!user,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("support_tickets")
@@ -148,7 +135,10 @@ function SuportePage() {
         .eq("user_id", user!.id)
         .order("created_at", { ascending: false })
         .limit(20);
-      if (error) throw error;
+      if (error) {
+        if (error.code === "PGRST205") return [];
+        throw error;
+      }
       return (data ?? []) as Ticket[];
     },
   });
@@ -156,6 +146,9 @@ function SuportePage() {
   const createMut = useMutation({
     mutationFn: async () => {
       if (!companyId || !user) throw new Error("Empresa não selecionada");
+      if (!SUPPORT_TICKETS_ENABLED) {
+        throw new Error("Modulo de chamados ainda nao foi criado no banco.");
+      }
       if (!form.subject.trim() || !form.message.trim()) {
         throw new Error("Preencha assunto e mensagem");
       }
@@ -166,7 +159,12 @@ function SuportePage() {
         message: form.message.trim(),
         priority: form.priority,
       });
-      if (error) throw error;
+      if (error) {
+        if (error.code === "PGRST205") {
+          throw new Error("Modulo de chamados ainda nao foi criado no banco.");
+        }
+        throw error;
+      }
     },
     onSuccess: () => {
       toast.success("Chamado aberto", {
@@ -431,7 +429,7 @@ function AdminPanel({ companyId }: { companyId: string | null }) {
 
   const { data: tickets = [], isLoading } = useQuery({
     queryKey: ["admin-support-tickets", companyId],
-    enabled: !!companyId,
+    enabled: SUPPORT_TICKETS_ENABLED && !!companyId,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("support_tickets")
@@ -786,3 +784,4 @@ function ChannelCard({
     </div>
   );
 }
+

@@ -283,3 +283,189 @@ export const deleteFinancialEntryAdmin = createServerFn({ method: "POST" })
     if (error) throw new Error(error.message);
     return { ok: true };
   });
+
+const ContractSchema = z.object({
+  companyId: z.string().uuid(),
+  id: z.string().uuid().optional(),
+  title: z.string().trim().min(2).max(200),
+  contract_type: z.string().trim().min(1),
+  client_id: z.string().uuid().optional().nullable(),
+  case_id: z.string().uuid().optional().nullable(),
+  counterparty: z.string().trim().max(200).optional().nullable(),
+  value: z.number().optional().nullable(),
+  payment_terms: z.string().trim().max(500).optional().nullable(),
+  start_date: z.string().optional().nullable(),
+  end_date: z.string().optional().nullable(),
+  signed_at: z.string().optional().nullable(),
+  status: z.string().trim().min(1),
+  file_url: z.string().trim().max(1000).optional().nullable(),
+  notes: z.string().trim().max(4000).optional().nullable(),
+});
+
+const EntityActionSchema = z.object({
+  companyId: z.string().uuid(),
+  id: z.string().uuid(),
+});
+
+export const listContractsAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => CompanySchema.parse(input))
+  .handler(async ({ data }) => {
+    const { data: rows, error } = await supabaseAdmin
+      .from("contracts")
+      .select(
+        "id, title, contract_type, client_id, case_id, counterparty, value, payment_terms, start_date, end_date, signed_at, status, file_url, notes",
+      )
+      .eq("company_id", data.companyId)
+      .order("created_at", { ascending: false })
+      .limit(1000);
+    if (error) {
+      if (isMissingTable(error, "contracts")) return [];
+      throw new Error(error.message);
+    }
+    return rows ?? [];
+  });
+
+export const saveContractAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => ContractSchema.parse(input))
+  .handler(async ({ data, context }) => {
+    const payload = {
+      title: data.title,
+      contract_type: data.contract_type,
+      client_id: data.client_id || null,
+      case_id: data.case_id || null,
+      counterparty: data.counterparty || null,
+      value: data.value ?? null,
+      payment_terms: data.payment_terms || null,
+      start_date: data.start_date || null,
+      end_date: data.end_date || null,
+      signed_at: data.signed_at || null,
+      status: data.status,
+      file_url: data.file_url || null,
+      notes: data.notes || null,
+    };
+
+    if (data.id) {
+      const { error } = await supabaseAdmin
+        .from("contracts")
+        .update(payload)
+        .eq("company_id", data.companyId)
+        .eq("id", data.id);
+      if (error) throw new Error(error.message);
+      return { id: data.id };
+    }
+
+    const { data: inserted, error } = await supabaseAdmin
+      .from("contracts")
+      .insert({
+        ...payload,
+        company_id: data.companyId,
+        created_by: context.userId,
+      })
+      .select("id")
+      .single();
+    if (error) throw new Error(error.message);
+    return { id: inserted.id };
+  });
+
+export const deleteContractAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => EntityActionSchema.parse(input))
+  .handler(async ({ data }) => {
+    const { error } = await supabaseAdmin
+      .from("contracts")
+      .delete()
+      .eq("company_id", data.companyId)
+      .eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });
+
+const DocumentRecordSchema = z.object({
+  companyId: z.string().uuid(),
+  client_id: z.string().uuid().optional().nullable(),
+  name: z.string().trim().min(1).max(240),
+  description: z.string().trim().max(2000).optional().nullable(),
+  category: z.string().trim().max(80).optional().nullable(),
+  scope: z.string().trim().max(80).optional().nullable(),
+  subcategory: z.string().trim().max(120).optional().nullable(),
+  storage_path: z.string().trim().min(1).max(1000),
+  mime_type: z.string().trim().max(160).optional().nullable(),
+  size_bytes: z.number().optional().nullable(),
+});
+
+const DocumentPathSchema = z.object({
+  companyId: z.string().uuid(),
+  id: z.string().uuid(),
+  storage_path: z.string().trim().min(1).max(1000),
+});
+
+export const listDocumentsAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => CompanySchema.parse(input))
+  .handler(async ({ data }) => {
+    const { data: rows, error } = await supabaseAdmin
+      .from("documents")
+      .select(
+        "id, name, description, category, scope, subcategory, storage_path, mime_type, size_bytes, client_id, uploaded_by, created_at",
+      )
+      .eq("company_id", data.companyId)
+      .order("created_at", { ascending: false })
+      .limit(500);
+    if (error) {
+      if (isMissingTable(error, "documents")) return [];
+      throw new Error(error.message);
+    }
+    return rows ?? [];
+  });
+
+export const createDocumentRecordAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => DocumentRecordSchema.parse(input))
+  .handler(async ({ data, context }) => {
+    const { data: inserted, error } = await supabaseAdmin
+      .from("documents")
+      .insert({
+        company_id: data.companyId,
+        uploaded_by: context.userId,
+        client_id: data.client_id || null,
+        name: data.name,
+        description: data.description || null,
+        category: data.category || null,
+        scope: data.scope || null,
+        subcategory: data.subcategory || null,
+        storage_path: data.storage_path,
+        mime_type: data.mime_type || null,
+        size_bytes: data.size_bytes ?? null,
+      })
+      .select("id")
+      .single();
+    if (error) throw new Error(error.message);
+    return { id: inserted.id };
+  });
+
+export const createDocumentSignedUrlAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => DocumentPathSchema.pick({ companyId: true, storage_path: true }).parse(input))
+  .handler(async ({ data }) => {
+    const { data: signed, error } = await supabaseAdmin.storage
+      .from("documents")
+      .createSignedUrl(data.storage_path, 60);
+    if (error) throw new Error(error.message);
+    return { signedUrl: signed.signedUrl };
+  });
+
+export const deleteDocumentAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((input: unknown) => DocumentPathSchema.parse(input))
+  .handler(async ({ data }) => {
+    await supabaseAdmin.storage.from("documents").remove([data.storage_path]);
+    const { error } = await supabaseAdmin
+      .from("documents")
+      .delete()
+      .eq("company_id", data.companyId)
+      .eq("id", data.id);
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });

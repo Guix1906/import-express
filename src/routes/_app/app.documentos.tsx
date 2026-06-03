@@ -1,8 +1,16 @@
 import { confirmDialog } from "@/components/app/confirm-dialog";
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useMemo, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  createDocumentRecordAdmin,
+  createDocumentSignedUrlAdmin,
+  deleteDocumentAdmin,
+  listClientsAdmin,
+  listDocumentsAdmin,
+} from "@/lib/core-persistence.functions";
 import { useAuth } from "@/hooks/use-auth";
 import { useActiveCompany } from "@/hooks/use-active-company";
 import { PageHeader } from "@/components/app/page-header";
@@ -115,6 +123,11 @@ function DocumentosPage() {
   const { companyId, isLoading: loadingCompany } = useActiveCompany();
   const qc = useQueryClient();
   const fileInput = useRef<HTMLInputElement>(null);
+  const listDocumentsFn = useServerFn(listDocumentsAdmin);
+  const listClientsFn = useServerFn(listClientsAdmin);
+  const createDocumentRecordFn = useServerFn(createDocumentRecordAdmin);
+  const deleteDocumentFn = useServerFn(deleteDocumentAdmin);
+  const createDocumentSignedUrlFn = useServerFn(createDocumentSignedUrlAdmin);
 
   const [search, setSearch] = useState("");
   const [clientFilter, setClientFilter] = useState<string>("all");
@@ -140,16 +153,7 @@ function DocumentosPage() {
     staleTime: 60_000,
     refetchOnWindowFocus: false,
     queryFn: async (): Promise<DocRow[]> => {
-      const { data, error } = await supabase
-        .from("documents")
-        .select(
-          "id, name, description, category, scope, subcategory, storage_path, mime_type, size_bytes, client_id, uploaded_by, created_at",
-        )
-        .eq("company_id", companyId!)
-        .order("created_at", { ascending: false })
-        .limit(500);
-      if (error) throw error;
-      return (data ?? []) as DocRow[];
+      return (await listDocumentsFn({ data: { companyId: companyId! } })) as DocRow[];
     },
   });
 
@@ -159,14 +163,7 @@ function DocumentosPage() {
     staleTime: 5 * 60_000,
     refetchOnWindowFocus: false,
     queryFn: async (): Promise<ClientLite[]> => {
-      const { data, error } = await supabase
-        .from("clients")
-        .select("id, name")
-        .eq("company_id", companyId!)
-        .order("name")
-        .limit(2000);
-      if (error) throw error;
-      return (data ?? []) as ClientLite[];
+      return (await listClientsFn({ data: { companyId: companyId! } })) as ClientLite[];
     },
   });
 
@@ -211,20 +208,22 @@ function DocumentosPage() {
         .upload(path, file, { contentType: file.type, upsert: false });
       if (upErr) throw upErr;
 
-      const { error: insErr } = await supabase.from("documents").insert({
-        company_id: companyId,
-        uploaded_by: user.id,
-        client_id: form.client_id === "none" ? null : form.client_id,
-        name: form.name.trim() || file.name,
-        description: form.description.trim() || null,
-        category: form.category,
-        scope: form.scope,
-        subcategory: form.subcategory.trim() || null,
-        storage_path: path,
-        mime_type: file.type || null,
-        size_bytes: file.size,
-      });
-      if (insErr) {
+      try {
+        await createDocumentRecordFn({
+          data: {
+            companyId,
+            client_id: form.client_id === "none" ? null : form.client_id,
+            name: form.name.trim() || file.name,
+            description: form.description.trim() || null,
+            category: form.category,
+            scope: form.scope,
+            subcategory: form.subcategory.trim() || null,
+            storage_path: path,
+            mime_type: file.type || null,
+            size_bytes: file.size,
+          },
+        });
+      } catch (insErr) {
         await supabase.storage.from("documents").remove([path]);
         throw insErr;
       }
@@ -249,10 +248,8 @@ function DocumentosPage() {
 
   const remove = useMutation({
     mutationFn: async (doc: DocRow) => {
-      const { error: sErr } = await supabase.storage.from("documents").remove([doc.storage_path]);
-      if (sErr) throw sErr;
-      const { error } = await supabase.from("documents").delete().eq("id", doc.id);
-      if (error) throw error;
+      if (!companyId) throw new Error("Empresa nao selecionada");
+      await deleteDocumentFn({ data: { companyId, id: doc.id, storage_path: doc.storage_path } });
     },
     onSuccess: () => {
       toast.success("Documento excluído");
@@ -267,6 +264,21 @@ function DocumentosPage() {
       .createSignedUrl(doc.storage_path, 60);
     if (error || !data?.signedUrl) {
       toast.error("Não foi possível gerar link");
+      return;
+    }
+    window.open(data.signedUrl, "_blank");
+  }
+
+  async function openDocument(doc: DocRow) {
+    if (!companyId) return;
+    const data = await createDocumentSignedUrlFn({
+      data: { companyId, storage_path: doc.storage_path },
+    }).catch((error: Error) => {
+      toast.error("Nao foi possivel gerar link", { description: error.message });
+      return null;
+    });
+    if (!data?.signedUrl) {
+      toast.error("Nao foi possivel gerar link");
       return;
     }
     window.open(data.signedUrl, "_blank");
@@ -450,7 +462,7 @@ function DocumentosPage() {
                 return (
                   <TableRow
                     key={d.id}
-                    onClick={() => downloadDoc(d)}
+                    onClick={() => openDocument(d)}
                     className="cursor-pointer hover:bg-muted/40"
                   >
                     <TableCell className="text-muted-foreground">#{num}</TableCell>
@@ -478,11 +490,11 @@ function DocumentosPage() {
                     </TableCell>
                     <TableCell onClick={(e) => e.stopPropagation()}>
                       <div className="flex gap-1">
-                        <Button size="sm" variant="outline" onClick={() => downloadDoc(d)}>
+                        <Button size="sm" variant="outline" onClick={() => openDocument(d)}>
                           <Eye className="h-4 w-4 mr-1" />
                           Abrir
                         </Button>
-                        <Button size="sm" variant="ghost" onClick={() => downloadDoc(d)}>
+                        <Button size="sm" variant="ghost" onClick={() => openDocument(d)}>
                           <Download className="h-4 w-4 text-emerald-600" />
                         </Button>
                         <Button

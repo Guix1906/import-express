@@ -128,7 +128,7 @@ function PerfilTab() {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("profiles")
-        .select("full_name, oab_number, oab_state, avatar_url")
+        .select("full_name")
         .eq("id", user!.id)
         .maybeSingle();
       if (error) throw error;
@@ -143,8 +143,8 @@ function PerfilTab() {
   useEffect(() => {
     if (data) {
       setFullName(data.full_name ?? "");
-      setOabNumber(data.oab_number ?? "");
-      setOabState(data.oab_state ?? "");
+      setOabNumber("");
+      setOabState("");
     }
   }, [data]);
 
@@ -157,8 +157,6 @@ function PerfilTab() {
         .from("profiles")
         .update({
           full_name: trimmed,
-          oab_number: oabNumber.trim() || null,
-          oab_state: oabState || null,
         })
         .eq("id", user!.id);
       if (error) throw error;

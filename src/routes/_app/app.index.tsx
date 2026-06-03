@@ -208,26 +208,14 @@ function Workspace() {
           .eq("company_id", companyId!)
           .gte("paid_at", sixMonthsAgo)
           .limit(240),
-        supabase
-          .from("publications")
-          .select("id, process_number, publication_date, status, content")
-          .eq("company_id", companyId!)
-          .eq("status", "not_handled")
-          .order("publication_date", { ascending: false })
-          .limit(6),
+        Promise.resolve({ data: [] }),
         supabase
           .from("activity_logs")
           .select("id, user_id, action, entity_type, entity_label, created_at, metadata")
           .eq("company_id", companyId!)
           .order("created_at", { ascending: false })
           .limit(10),
-        supabase
-          .from("atendimentos")
-          .select("id, subject, scheduled_at, status, client_id, channel")
-          .eq("company_id", companyId!)
-          .gte("scheduled_at", todayStart.toISOString())
-          .order("scheduled_at", { ascending: true })
-          .limit(8),
+        Promise.resolve({ data: [] }),
         supabase
           .from("process_movements")
           .select("id, title, movement_date, movement_type, case_id, created_at")

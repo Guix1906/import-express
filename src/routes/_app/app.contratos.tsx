@@ -23,6 +23,12 @@ import {
 import { useServerFn } from "@tanstack/react-start";
 import { activateContractWithFinance } from "@/lib/contracts.functions";
 import { createCaseFromContract } from "@/lib/process.functions";
+import {
+  deleteContractAdmin,
+  listClientsAdmin,
+  listContractsAdmin,
+  saveContractAdmin,
+} from "@/lib/core-persistence.functions";
 import { generateSimpleContractPdf } from "@/lib/simple-contract-pdf";
 import { Link } from "@tanstack/react-router";
 
@@ -151,6 +157,10 @@ function ContratosPage() {
   const [creatingCase, setCreatingCase] = useState<Contract | null>(null);
   const activateFn = useServerFn(activateContractWithFinance);
   const createCaseFn = useServerFn(createCaseFromContract);
+  const listClientsFn = useServerFn(listClientsAdmin);
+  const listContractsFn = useServerFn(listContractsAdmin);
+  const saveContractFn = useServerFn(saveContractAdmin);
+  const deleteContractFn = useServerFn(deleteContractAdmin);
 
   const { data: companyName = "" } = useQuery({
     queryKey: ["company-name", companyId],
@@ -169,13 +179,7 @@ function ContratosPage() {
     queryKey: ["clients-list", companyId],
     enabled: !!companyId,
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("clients")
-        .select("id, name")
-        .eq("company_id", companyId!)
-        .order("name");
-      if (error) throw error;
-      return data ?? [];
+      return listClientsFn({ data: { companyId: companyId! } });
     },
   });
 
@@ -183,13 +187,7 @@ function ContratosPage() {
     queryKey: ["contracts", companyId],
     enabled: !!companyId,
     queryFn: async () => {
-      const { data, error } = await supabase
-        .from("contracts")
-        .select("*")
-        .eq("company_id", companyId!)
-        .order("created_at", { ascending: false });
-      if (error) throw error;
-      return (data ?? []) as unknown as Contract[];
+      return (await listContractsFn({ data: { companyId: companyId! } })) as Contract[];
     },
   });
 
@@ -233,18 +231,8 @@ function ContratosPage() {
 
   const saveMut = useMutation({
     mutationFn: async (payload: Partial<Contract> & { id?: string }) => {
-      if (payload.id) {
-        const { id, ...rest } = payload;
-        const { error } = await supabase.from("contracts").update(rest).eq("id", id);
-        if (error) throw error;
-      } else {
-        const { error } = await supabase.from("contracts").insert({
-          ...payload,
-          company_id: companyId!,
-          created_by: user!.id,
-        } as never);
-        if (error) throw error;
-      }
+      if (!companyId) throw new Error("Empresa nao selecionada");
+      await saveContractFn({ data: { ...payload, companyId } });
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["contracts"] });
@@ -257,8 +245,8 @@ function ContratosPage() {
 
   const deleteMut = useMutation({
     mutationFn: async (id: string) => {
-      const { error } = await supabase.from("contracts").delete().eq("id", id);
-      if (error) throw error;
+      if (!companyId) throw new Error("Empresa nao selecionada");
+      await deleteContractFn({ data: { companyId, id } });
     },
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ["contracts"] });

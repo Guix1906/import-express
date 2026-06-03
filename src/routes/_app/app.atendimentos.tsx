@@ -68,6 +68,8 @@ import {
 
 export const Route = createFileRoute("/_app/app/atendimentos")({ component: AtendimentosPage });
 
+const ATENDIMENTOS_ENABLED = false;
+
 type Channel = "presencial" | "video" | "telefone" | "whatsapp" | "email";
 type Status =
   | "agendado"
@@ -193,7 +195,7 @@ function AtendimentosPage() {
 
   const { data: fees = [] } = useQuery<FeeSchedule[]>({
     queryKey: ["fee_schedule", companyId],
-    enabled: !!companyId,
+    enabled: ATENDIMENTOS_ENABLED && !!companyId,
     queryFn: async () => {
       const { data } = await supabase
         .from("fee_schedule")
@@ -211,7 +213,7 @@ function AtendimentosPage() {
 
   const { data: atendimentos = [], isLoading } = useQuery({
     queryKey: ["atendimentos", companyId],
-    enabled: !!companyId,
+    enabled: ATENDIMENTOS_ENABLED && !!companyId,
     staleTime: 30_000,
     queryFn: async () => {
       const { data, error } = await supabase
@@ -276,6 +278,9 @@ function AtendimentosPage() {
 
   const saveMut = useMutation({
     mutationFn: async () => {
+      if (!ATENDIMENTOS_ENABLED) {
+        throw new Error("Modulo de atendimentos ainda nao foi criado no banco.");
+      }
       if (!form.subject.trim()) throw new Error("Informe o assunto");
       let scheduled_at: string | null = null;
       if (form.date) {
@@ -317,6 +322,9 @@ function AtendimentosPage() {
 
   const deleteMut = useMutation({
     mutationFn: async (id: string) => {
+      if (!ATENDIMENTOS_ENABLED) {
+        throw new Error("Modulo de atendimentos ainda nao foi criado no banco.");
+      }
       const { error } = await supabase.from("atendimentos").delete().eq("id", id);
       if (error) throw error;
     },
@@ -805,6 +813,9 @@ function FeeScheduleDialog({
 
   const save = useMutation({
     mutationFn: async () => {
+      if (!ATENDIMENTOS_ENABLED) {
+        throw new Error("Modulo de atendimentos ainda nao foi criado no banco.");
+      }
       if (!form.service_type.trim()) throw new Error("Informe o tipo de serviço");
       await upsertFn({
         data: {
@@ -826,6 +837,9 @@ function FeeScheduleDialog({
 
   const del = useMutation({
     mutationFn: async (id: string) => {
+      if (!ATENDIMENTOS_ENABLED) {
+        throw new Error("Modulo de atendimentos ainda nao foi criado no banco.");
+      }
       await delFn({ data: { id } });
     },
     onSuccess: () => {
