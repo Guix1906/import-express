@@ -5,6 +5,7 @@ import {
   Scripts,
   createRootRoute,
 } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -23,7 +24,7 @@ export const Route = createRootRoute({
   notFoundComponent: NotFoundComponent,
 });
 
-function DocumentShell({ children }: { children: React.ReactNode }) {
+function DocumentShell({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR">
       <head>
